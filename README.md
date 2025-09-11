@@ -1,4 +1,5 @@
-# 3D Game Framework (สำหรับการเรียนการสอนวิชา Computer Game Development)
+# 3D Game Framework 
+(สำหรับการเรียนการสอนวิชา Computer Game Development)
 
 ## 📖 รายละเอียดโครงการ
 โครงการนี้เป็น **3D Game Framework** ที่ออกแบบขึ้นเพื่อใช้ในการเรียนการสอนในรายวิชา  
@@ -42,17 +43,16 @@ Framework นี้จะช่วยให้นักศึกษาเริ�
 
 ## 📂 โครงสร้างไฟล์
 ```
-3d-game-framework/
-│── docs/                # เอกสารประกอบ
-│── assets/              # โมเดล, เท็กซ์เจอร์, เสียง
-│── src/                 # ไฟล์สคริปต์หลัก
-│   ├── player/          # ระบบ Player และ PlayerData
-│   ├── monster/         # ระบบ Monster และ MonsterData
-│   ├── ui/              # HUD, Mini-map, Menu
-│   └── core/            # Class พื้นฐาน เช่น CharacterData
-│── scenes/              # ไฟล์ Scene ของ Godot (.tscn)
-│── README.md            # เอกสารโปรเจกต์นี้
-│── LICENSE              # ใบอนุญาต
+game3d-framework/
+│── addons/           # โฟลเดอร์สำหรับ Add-ons เสริม เช่น MetaMultimeshInstance3D
+│── assets/           # โมเดล, เท็กซ์เจอร์, เสียง ฯลฯ
+│── characters/       # ข้อมูล /สคริปต์ที่เกี่ยวข้องกับตัวละคร
+│── objects/          # อ็อบเจ็กต์ในเกมอื่นๆ (Items, Props ฯลฯ)
+│── resources/        # Resource files เช่น data files, configuration
+│── scenes/           # ไฟล์ Scene ของ Godot (.tscn)
+│── scripts/          # ไฟล์สคริปต์หลัก (GDScript)
+│── LICENSE           # ใบอนุญาต (MIT)
+│── README.md         # เอกสารแนะนำโครงการนี้
 ```
 
 ---
