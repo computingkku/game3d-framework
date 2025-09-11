@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgs1imp15r0yn"]
+
+[ext_resource type="Texture2D" uid="uid://c8jomsdnhk0p2" path="res://assets/glb/forest/platform1.jpg" id="1_cl7pr"]
+[ext_resource type="Texture2D" uid="uid://06sin13jrkck" path="res://assets/glb/forest/grass.jpg" id="2_mynkr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_13nw8"]
+points = PackedVector3Array(-5, -0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, -0.5, 5, -5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mynkr"]
+albedo_texture = ExtResource("1_cl7pr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_13nw8"]
+material = SubResource("StandardMaterial3D_mynkr")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahkxs"]
+albedo_texture = ExtResource("2_mynkr")
+uv1_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_feipn"]
+material = SubResource("StandardMaterial3D_ahkxs")
+size = Vector2(10, 10)
+
+[node name="base01" type="StaticBody3D"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("ConvexPolygonShape3D_13nw8")
+
+[node name="Box" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+mesh = SubResource("BoxMesh_13nw8")
+skeleton = NodePath("../..")
+
+[node name="Grass" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("PlaneMesh_feipn")

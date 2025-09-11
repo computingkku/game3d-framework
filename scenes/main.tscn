@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://dywx8iqsoxnyj"]
+[gd_scene load_steps=7 format=3 uid="uid://dywx8iqsoxnyj"]
+
+[ext_resource type="PackedScene" uid="uid://bgs1imp15r0yn" path="res://objects/platforms/base_01.tscn" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dfovkdkx0qh0r" path="res://characters/players/player.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cg1iehre17pov" path="res://objects/items/potion_hp.tscn" id="3_sugp2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
+sky_top_color = Color(0.440757, 0.738184, 0.923426, 1)
+sky_horizon_color = Color(0.925413, 0.999769, 1.04608, 1)
+ground_bottom_color = Color(0.223103, 0.223103, 0.223103, 1)
+ground_horizon_color = Color(0.925413, 0.999769, 1.04608, 1)
+
+[sub_resource type="Sky" id="Sky_sugp2"]
+sky_material = SubResource("ProceduralSkyMaterial_0wfyh")
+
+[sub_resource type="Environment" id="Environment_jyhfs"]
+background_mode = 2
+sky = SubResource("Sky_sugp2")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jyhfs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 5.78983, 0)
+shadow_enabled = true
+
+[node name="platforms" type="Node3D" parent="."]
+
+[node name="base01" parent="platforms" instance=ExtResource("1_sugp2")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -4.76837e-07, 0)
+
+[node name="base02" parent="platforms" instance=ExtResource("1_sugp2")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -95.6094, 1.92826, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.932718, -0.0487768, 0.357292, -0.00841205, 0.987597, 0.156785, -0.360508, -0.149241, 0.920739, 0.668503, 2.32206, 2.11203)
+
+[node name="PotionHp" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00939208, 1.05146, 2.40597)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0260198, 2.60502e-05, -2.01515)

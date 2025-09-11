@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfovkdkx0qh0r"]
+
+[ext_resource type="PackedScene" uid="uid://bjy3a224vawan" path="res://characters/players/Knight.tscn" id="1_dvkud"]
+[ext_resource type="Script" uid="uid://bbnfbjvrba3b4" path="res://characters/players/player.gd" id="1_yalo1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yalo1"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_mask = 6
+script = ExtResource("1_yalo1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00723, 0)
+shape = SubResource("CapsuleShape3D_yalo1")
+
+[node name="Knight" parent="." instance=ExtResource("1_dvkud")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89903, -0.127955)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.954225, 0.299091, 0, -0.299091, 0.954225, 0.072196, 1.23871, 4.46378)
+current = true
