@@ -20,7 +20,13 @@ var actions={
 	"jump_weapon":["jump"],
 	"death":["death"],
 }
-var current_action="idle"
+var current_action=""
+var is_attack = false     # กำลังอยู่ในท่าโจมตี 
+var is_attackhit = false  # ช่วงที่โจมตีเสียหาย
+var is_death = false		# ช่วงตาย
+var attack_time_start=0.2
+var attack_time_hit=0.8
+var attack_time_back=0.2
 
 func _ready() -> void:
 	init()
@@ -71,12 +77,22 @@ func get_animation_name(action,defval="idle"):
 	return name
 
 func play(action: StringName = &"", custom_blend: float = 0.2):
-	if action == "idle" && !(current_action in ["","jump"]) : return
+	if is_attack: return
+	if action == "idle" && !(current_action in ["","jump","idle"]) : return
 	if action == current_action && animation_player.current_animation!="" : return		
 	current_action = action
 	var name=get_animation_name(action)
 	if animation_player.current_animation != name:
 		animation_player.play(name,custom_blend)
+	if action == "attack":
+		is_attack=true
+		is_attackhit=false
+		await get_tree().create_timer(attack_time_start).timeout
+		is_attackhit=true
+		await get_tree().create_timer(attack_time_hit).timeout
+		is_attackhit=false
+		await get_tree().create_timer(attack_time_back).timeout		
+		is_attack=false
 
 func on_animation_finished(anim_name:StringName):
 	current_action=""

@@ -1,38 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgs1imp15r0yn"]
+[gd_scene load_steps=5 format=3 uid="uid://bgs1imp15r0yn"]
 
-[ext_resource type="Texture2D" uid="uid://c8jomsdnhk0p2" path="res://assets/glb/forest/platform1.jpg" id="1_cl7pr"]
-[ext_resource type="Texture2D" uid="uid://06sin13jrkck" path="res://assets/glb/forest/grass.jpg" id="2_mynkr"]
+[ext_resource type="PackedScene" uid="uid://b3ujg6oo5pd2g" path="res://assets/models/platform01.glb" id="1_cl7pr"]
+[ext_resource type="Texture2D" uid="uid://3p60atw01yyc" path="res://assets/models/platform01_platform01_uv.png" id="2_mynkr"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_13nw8"]
-points = PackedVector3Array(-5, -0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, -0.5, 5, -5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mynkr"]
-albedo_texture = ExtResource("1_cl7pr")
-
-[sub_resource type="BoxMesh" id="BoxMesh_13nw8"]
-material = SubResource("StandardMaterial3D_mynkr")
-size = Vector3(10, 1, 10)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cl7pr"]
+points = PackedVector3Array(1.99036, 0.215916, -2.73051, 2.48018, 0.609416, -2.38341, 2.64521, -0.150959, -2.50909, 1.91048, -0.609652, -2.4163, -2.64531, -0.609652, -2.69821, -2.99418, -0.609652, -2.69821, -2.99418, 0.113136, -2.69821, -2.64531, 0.609416, -2.51555, 2.64463, 0.609416, 2.51479, 2.87544, 0.483731, 2.51479, 2.74799, 0.245282, -2.22542, 2.87544, -0.609652, 2.51479, 2.64463, -0.871398, 2.51479, 2.25406, -0.609652, -2.11324, 1.20218, -0.935024, -1.43196, -3.12456, -0.609652, 1.68785, -1.45659, -1.39039, 1.26088, -2.99418, 0.478445, -2.51555, -2.43799, 0.609416, 2.33918, 2.64463, 0.446339, 2.88186, -2.43799, 0.492541, 2.70626, 2.87544, 0.280716, 2.88186, 2.87544, -0.609652, 2.88186, -1.76493, -0.958125, 3.26949, -2.78744, -0.609652, 2.70626, -2.78744, 0.372533, 2.33918, -2.62945, 0.424412, 2.61581)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahkxs"]
+albedo_color = Color(0.231373, 0.678431, 0.247059, 1)
 albedo_texture = ExtResource("2_mynkr")
-uv1_scale = Vector3(50, 50, 50)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_feipn"]
-material = SubResource("StandardMaterial3D_ahkxs")
-size = Vector2(10, 10)
 
 [node name="base01" type="StaticBody3D"]
 collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("ConvexPolygonShape3D_13nw8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5946, 0)
+shape = SubResource("ConvexPolygonShape3D_cl7pr")
 
-[node name="Box" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
-mesh = SubResource("BoxMesh_13nw8")
-skeleton = NodePath("../..")
+[node name="platform02" parent="." instance=ExtResource("1_cl7pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5946, 0)
 
-[node name="Grass" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("PlaneMesh_feipn")
+[node name="Cube" parent="platform02" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ahkxs")
+
+[editable path="platform02"]

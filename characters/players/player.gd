@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 		action = "walk"
 		if  input_vec.y>0:
 			model.rotation_degrees.y = lerp(model.rotation_degrees.y,0.0,0.2)
-		elif  input_vec.y<0:
+		elif  input_vec.y<0 && model.rotation_degrees.y!=-180:
 			model.rotation_degrees.y = lerp(model.rotation_degrees.y,180.0,0.2)	
 		elif  input_vec.x<0:
 			model.rotation_degrees.y = lerp(model.rotation_degrees.y,-90.0,0.2)

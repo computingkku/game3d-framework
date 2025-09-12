@@ -22,7 +22,7 @@ AudioManager="*res://scripts/AudioManager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg")
+enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/uv_tools/plugin.cfg")
 
 [input]
 
