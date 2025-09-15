@@ -5,5 +5,26 @@
 	"icon": "res://assets/icons/coin.png",
 	"item_type": "CONSUMABLE",
 	"effect": { "states_add": { "gold": 1 } }
-  }
+  },
+  {
+	"id": "hp",
+	"name": "ยาพลังชีวิต",
+	"icon": "res://assets/icons/potion_hp_s.png",
+	"item_type": "CONSUMABLE",
+	"effect": { "states_add": { "hp": 50 } }
+  },
+ {
+	"id": "mp",
+	"name": "ยาพลังเวท",
+	"icon": "res://assets/icons/potion_mp_s.png",
+	"item_type": "CONSUMABLE",
+	"effect": { "states_add": { "mp": 50 } }
+  },
+ {
+	"id": "exp",
+	"name": "ยาเพิ่มประสบการณ์",
+	"icon": "res://assets/icons/potion_exp_s.png",
+	"item_type": "CONSUMABLE",
+	"effect": { "states_add": { "exp": 50 } }
+  },
 ]

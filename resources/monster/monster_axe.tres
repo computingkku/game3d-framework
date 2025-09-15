@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://csve6l7kppj34"]
+[gd_resource type="Resource" script_class="MonsterData" load_steps=6 format=3 uid="uid://csve6l7kppj34"]
 
 [ext_resource type="Script" uid="uid://d3tkrnb4wv7i4" path="res://scripts/inventory/LootItem.gd" id="1_57s77"]
 [ext_resource type="PackedScene" uid="uid://2ejf8e0jqjmu" path="res://objects/items/Coin.tscn" id="2_hgwaw"]
@@ -9,8 +9,17 @@ script = ExtResource("1_57s77")
 item_scene = ExtResource("2_hgwaw")
 item_id = ""
 chance = 0.25
+min = 3
+max = 10
+item_type = 0
+metadata/_custom_type_script = "uid://d3tkrnb4wv7i4"
+
+[sub_resource type="Resource" id="Resource_57s77"]
+script = ExtResource("1_57s77")
+item_id = "hp"
+chance = 0.25
 min = 1
-max = 1
+max = 3
 item_type = 0
 metadata/_custom_type_script = "uid://d3tkrnb4wv7i4"
 
@@ -24,7 +33,7 @@ exp_reward_min = 2
 gold_reward_min = 2
 exp_reward_max = 10
 gold_reward_max = 10
-loot_table = Array[ExtResource("1_57s77")]([SubResource("Resource_mlvn2")])
+loot_table = Array[ExtResource("1_57s77")]([SubResource("Resource_mlvn2"), SubResource("Resource_57s77")])
 display_name = "ทหารผี"
 faction = &"enemy"
 hp = 100.0

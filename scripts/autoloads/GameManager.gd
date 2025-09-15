@@ -5,6 +5,7 @@ signal state_changed()
 var player : CharacterBody3D 
 var gravity = 10
 var ui_visible = false
+var ui_status_canvas = null
 
 func set_player(p:CharacterBody3D):
 	player = p
@@ -23,5 +24,11 @@ func emit_state_changed():
 
 func give_reward(exp,gold):
 	if player:
+		if(exp>0) : notify("เพิ่มค่าประสบการณ์ "+str(exp))
+		if(gold>0): notify("ได้รับทอง "+str(gold))
 		player.data.add_exp(exp)
 		player.inventory.add_item_by_id("gold",gold)	
+
+func notify(text:String):
+	if ui_status_canvas:
+		ui_status_canvas.notify(text)

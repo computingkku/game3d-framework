@@ -79,5 +79,8 @@ current = true
 
 [node name="Knight" parent="Model" index="0" instance=ExtResource("3_uf3nl")]
 
+[node name="Label" parent="." index="10"]
+text = "Name"
+
 [node name="Marker3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93327, 0)

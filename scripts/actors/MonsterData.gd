@@ -29,10 +29,9 @@ func add_loot(item: ItemData, chance=0.25, min: int = 1, max: int=1):
 	loot_table.append(x)
 
 # สุ่มดรอป (ผลลัพธ์เป็น Array ของ Dictionary หรือ Resource ตามที่คุณต้องการ)
-func roll_loot(_actor:Node3D) -> Array:
-	# TODO สร้าง object ของ dropitem ในตำแหน่งที่ monster ตาย
-	var drops: Array = []
+func roll_loot(_actor:Node3D):
+	# TODO สร้าง object ของ dropitem ในตำแหน่งที่ monster ตาย	var drops: Array = []
+	print("drop ")
 	for e in loot_table:
 		if randf() <= e.chance:
-			drops.append(e.new_instace(_actor))
-	return drops
+			e.new_instace(_actor)

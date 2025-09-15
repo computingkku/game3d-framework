@@ -8,7 +8,7 @@ enum ItemType {
 	QUEST        # 4  ไอเท็มเควสต์ (ไม่ใช้ combat)
 }
 var drop_item = preload("res://objects/items/DropItem.tscn")
-var drop_weapon = preload("res://objects/items/DropWeapon.tscn")
+var drop_weapon = preload("res://objects/items/Weapon.tscn")
 
 # Optional: canonical stat keys (เพื่อกันสะกดผิด)
 const STAT := {

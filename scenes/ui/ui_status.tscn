@@ -176,3 +176,12 @@ horizontal_alignment = 2
 [node name="Coin" type="Sprite2D" parent="lbGold"]
 position = Vector2(84, 13)
 texture = ExtResource("3_2mnw6")
+
+[node name="MsgVBox" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -334.0
+offset_right = 300.0
+grow_vertical = 0

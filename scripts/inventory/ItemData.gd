@@ -12,6 +12,7 @@ extends Resource
 
 # ไอคอน/โมเดล (แล้วแต่เกมคุณจะใช้)
 @export var icon: Texture2D
+@export var icon_path: String
 @export_node_path("Node3D") var node_path: NodePath
 
 # stack/น้ำหนัก

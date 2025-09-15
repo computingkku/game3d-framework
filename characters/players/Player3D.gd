@@ -101,9 +101,13 @@ func _physics_process(delta: float) -> void:
 	velocity.x = hvel.x
 	velocity.z = hvel.z
 
-	if _alive and Input.is_action_just_pressed("attack"):
-		_time_since_attack = 0
-		action = "attack"	
+	if _alive: 
+		if Input.is_action_just_pressed("attack"):
+			_time_since_attack = 0
+			action = "attack"
+		if !GameManager.ui_visible and 	Input.is_action_just_pressed("mclick"):
+			_time_since_attack = 0
+			action = "attack"	
 	# ----- Jump: รองรับ coyote time + jump buffer -----
 	var can_coyote = _time_since_left_floor <= coyote_time
 	var can_buffer = _time_since_jump_pressed <= jump_buffer
@@ -126,6 +130,7 @@ func _input(event: InputEvent) -> void:
 		if head:
 			head.rotation_degrees.x = pitch
 
+	
 	# Zoom in/out with mouse wheel
 	if  event is InputEventMouseButton and event.pressed and cam:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:

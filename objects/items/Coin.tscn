@@ -11,6 +11,7 @@ name = "เหรียญทอง"
 description = "เหรียญทอง ใช้เพื่อซื้อสินค้า"
 item_type = 0
 icon = ExtResource("2_l801j")
+icon_path = ""
 node_path = NodePath("")
 stack_size = 10000
 weight = 1

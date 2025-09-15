@@ -27,5 +27,5 @@ func _on_button_pressed() -> void:
 	knight.add("1H_Melee_Attack_Chop",1.0,0,0.5)
 	knight.start()
 	await get_tree().create_timer(3).timeout
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	close()

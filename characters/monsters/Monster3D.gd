@@ -126,10 +126,12 @@ func _physics_process(delta: float) -> void:
 	
 func on_died():
 	super.on_died()
-	await get_tree().create_timer(2).timeout
+	GameManager.notify("กำจัด "+data.display_name+" สำเร็จ ")
 	var exp_reward = randi_range(data.exp_reward_min,data.exp_reward_max)
-	var gold_reward = randi_range(data.gold_reward_min,data.gold_reward_max)
+	var gold_reward = randi_range(data.gold_reward_min,data.gold_reward_max)	
 	GameManager.give_reward(exp_reward,gold_reward)
+	data.roll_loot(self)
+	await get_tree().create_timer(2).timeout
 	if rebirth_time>=3:
 		await get_tree().create_timer(rebirth_time).timeout
 		# เพิ่มพลังโจมตี และ พื้นคืนชีพ

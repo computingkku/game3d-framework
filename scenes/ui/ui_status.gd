@@ -11,9 +11,11 @@ var data: PlayerData
 @onready var mp_bar: TextureProgressBar = $MpBar
 @onready var lb_hp: Label = $HealBar/lbHP
 @onready var lb_exp: Label = $lbExp
+@onready var msg_v_box: VBoxContainer = $MsgVBox
 
 func _ready() -> void:
 	GameManager.connect("state_changed",on_state_changed)
+	GameManager.ui_status_canvas = self 
 
 func on_state_changed():
 	if  !GameManager.player : return
@@ -31,4 +33,12 @@ func on_state_changed():
 	var inventory : InventoryData =  GameManager.player.inventory
 	if inventory : 
 		lb_gold.text = str(inventory.get_item_count("gold"))
-	
+
+func notify(text:String):
+	var dlabel = Label.new()
+	dlabel.text = text
+#	dlabel.font_size = 24
+#	dlabel.horizontal_alignment =HORIZONTAL_ALIGNMENT_CENTER
+	msg_v_box.add_child(dlabel)
+	await get_tree().create_timer(8).timeout
+	dlabel.queue_free()

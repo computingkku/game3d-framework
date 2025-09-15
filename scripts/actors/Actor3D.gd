@@ -62,6 +62,9 @@ func _init_event_handlers():
 
 
 func _process(delta: float) -> void:
+	if !_alive :
+		label_name.visible = false	
+		return
 	var cam : Camera3D = GameManager.player.cam
 	if !cam : return
 	var d = cam.global_position - marker_3d.global_position

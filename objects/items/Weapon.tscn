@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://jo44di2g7gba"]
+
+[ext_resource type="PackedScene" uid="uid://bi2nihnphq2ne" path="res://objects/items/DropItem.tscn" id="1_vuoor"]
+[ext_resource type="ArrayMesh" uid="uid://b1jt1m1ufju0e" path="res://assets/icons/1H_Sword.mesh" id="2_l2m1i"]
+
+[node name="Weapon" instance=ExtResource("1_vuoor")]
+data = null
+item_id = "knight_sword1"
+
+[node name="Area3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2752, 0.001)
+
+[node name="Item" parent="Area3D" index="2"]
+transform = Transform3D(-0.635212, 0, 0.772338, 0, 1, 0, -0.772338, 0, -0.635212, 0, 0, 0)
+
+[node name="Mesh" parent="Area3D/Item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.981393, 0.192008, 0, -0.192008, 0.981393, 0, 0, 0)
+mesh = ExtResource("2_l2m1i")

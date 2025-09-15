@@ -30,6 +30,7 @@ id = "potion_hp"
 name = "น้ำยาเพิ่มพลังชีวิต"
 description = "เมื่อกินแล้วจะเพิ่มพลังชีวิตอย่างรวดเร็ว"
 item_type = 0
+icon_path = ""
 node_path = NodePath("")
 stack_size = 1
 weight = 1
