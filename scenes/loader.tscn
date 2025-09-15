@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctiykmp3wk4g6"]
+
+[ext_resource type="Script" uid="uid://cqk6e63t6m6hr" path="res://scenes/loader.gd" id="1_1"]
+[ext_resource type="Texture2D" uid="uid://dn43vdjyys5s1" path="res://assets/images/logo.png" id="2_t6wgt"]
+
+[node name="Loader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Center"]
+layout_mode = 2
+texture = ExtResource("2_t6wgt")
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Jumpstart 3D"
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Center/VBox"]
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2

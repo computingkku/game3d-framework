@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlnfuiwdng0cm"]
+
+[ext_resource type="PackedScene" uid="uid://b384c1nx40qd4" path="res://characters/monsters/Monster3D.tscn" id="1_ltnos"]
+[ext_resource type="PackedScene" uid="uid://cfanhndu8s42x" path="res://characters/monsters/model/skeleton_warrior.tscn" id="2_pkg5w"]
+[ext_resource type="AudioStream" uid="uid://de4gw5lf53lod" path="res://assets/sfx/step.wav" id="3_axa45"]
+
+[node name="SkeletonWarrior" instance=ExtResource("1_ltnos")]
+model_scene = ExtResource("2_pkg5w")
+
+[node name="CapsuleMesh" parent="." index="1"]
+visible = false
+
+[node name="walk_sound" type="AudioStreamPlayer3D" parent="." index="8"]
+stream = ExtResource("3_axa45")
+max_distance = 6.0
+bus = &"Sfx"
+
+[node name="Skeleton_Warrior" parent="Model" index="0" instance=ExtResource("2_pkg5w")]

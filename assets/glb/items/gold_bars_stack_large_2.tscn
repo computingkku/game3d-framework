@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct8ovb2g267uw"]
+
+[ext_resource type="PackedScene" uid="uid://dvquhggpupcdn" path="res://assets/glb/items/Silver_Bars_Stack_Large.gltf" id="1_2qkxv"]
+[ext_resource type="Texture2D" uid="uid://byth55r20dlll" path="res://assets/glb/items/resource_bits_texture.png" id="2_srxau"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qkxv"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.920393, 0.553423, 0.178724, 1)
+albedo_texture = ExtResource("2_srxau")
+metallic = 0.82
+metallic_specular = 0.54
+emission_enabled = true
+emission = Color(0.984314, 0.745098, 0, 1)
+
+[node name="Silver_Bars_Stack_Large2" instance=ExtResource("1_2qkxv")]
+
+[node name="Silver_Bars_Stack_Large" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2qkxv")

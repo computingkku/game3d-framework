@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://cicyhltpma3q5"]
+
+[ext_resource type="Script" uid="uid://d2lwj6t1q7nl1" path="res://scenes/ui/ui_inventory.gd" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://dig87jibye58q" path="res://assets/icons/close-30.png" id="2_x4jx1"]
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_nt7q6")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="InventoryPanel" type="PanelContainer" parent="Canvas"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+pivot_offset = Vector2(5, 5)
+
+[node name="VBox" type="VBoxContainer" parent="Canvas/InventoryPanel"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="WeaponsLabel" type="Label" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+text = "Weapons"
+
+[node name="WeaponsGrid" type="GridContainer" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+
+[node name="HSeparator" type="HSeparator" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ShieldsLabel" type="Label" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+text = "Shields"
+
+[node name="ShieldsGrid" type="GridContainer" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+
+[node name="PropsLabel" type="Label" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+text = "Accessories"
+
+[node name="PropsGrid" type="GridContainer" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+
+[node name="ResourceLabel" type="Label" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+text = "Resources"
+
+[node name="OtherGrid" type="GridContainer" parent="Canvas/InventoryPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/InventoryPanel"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="Canvas/InventoryPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Close"
+icon = ExtResource("2_x4jx1")
+
+[connection signal="visibility_changed" from="Canvas" to="." method="_on_canvas_visibility_changed"]
+[connection signal="pressed" from="Canvas/InventoryPanel/MarginContainer/Button" to="." method="_on_button_pressed"]

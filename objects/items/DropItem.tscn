@@ -1,0 +1,125 @@
+[gd_scene load_steps=14 format=3 uid="uid://bi2nihnphq2ne"]
+
+[ext_resource type="Script" uid="uid://chxpqvira46r2" path="res://objects/items/DropItem.gd" id="1_td5ba"]
+[ext_resource type="Texture2D" uid="uid://sym48skyr2tq" path="res://assets/icons/box.png" id="2_6s1fi"]
+[ext_resource type="Texture2D" uid="uid://b5umrnx3cm8nk" path="res://assets/images/star2.png" id="2_m6p3b"]
+[ext_resource type="Script" uid="uid://can52838ccam" path="res://scripts/inventory/ItemData.gd" id="3_rp5fs"]
+
+[sub_resource type="Resource" id="Resource_lhlpo"]
+script = ExtResource("3_rp5fs")
+id = "box"
+name = "กล่องธรรมดา"
+description = "ไม่มีประโยชน์อะไร"
+item_type = 0
+icon = ExtResource("2_6s1fi")
+node_path = NodePath("")
+stack_size = 10000
+weight = 1
+meta = Dictionary[StringName, Variant]({})
+metadata/_custom_type_script = "uid://can52838ccam"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2cvmw"]
+radius = 0.3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwvch"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(1, -0.5, 0)
+spread = 180.0
+initial_velocity_min = 0.4
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.2
+color = Color(0.631373, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idl02"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 1
+albedo_color = Color(1, 0.878431, 0, 1)
+albedo_texture = ExtResource("2_m6p3b")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = -3.906
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wlf4"]
+material = SubResource("StandardMaterial3D_idl02")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6p3b"]
+albedo_color = Color(1, 0.247059, 0.0901961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lhlpo"]
+material = SubResource("StandardMaterial3D_m6p3b")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_lhlpo"]
+resource_name = "start"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0.001), Vector3(0, 1.31618, 0.001), Vector3(0, 1, 0.001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D/Item:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_td5ba"]
+_data = {
+&"start": SubResource("Animation_lhlpo")
+}
+
+[node name="DropItem" type="Node3D"]
+script = ExtResource("1_td5ba")
+data = SubResource("Resource_lhlpo")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.001)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.126009, 0)
+shape = SubResource("SphereShape3D_2cvmw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0630372, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_nwvch")
+draw_pass_1 = SubResource("QuadMesh_8wlf4")
+
+[node name="Item" type="Node3D" parent="Area3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="Area3D/Item"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_lhlpo")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_td5ba")
+}
+autoplay = "start"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

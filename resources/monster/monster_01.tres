@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://b2rm154l206f"]
+
+[ext_resource type="Script" uid="uid://d3tkrnb4wv7i4" path="res://scripts/inventory/LootItem.gd" id="1_ahrxr"]
+[ext_resource type="PackedScene" uid="uid://2ejf8e0jqjmu" path="res://objects/items/Coin.tscn" id="2_hhu3a"]
+[ext_resource type="Script" uid="uid://cswu2nd40qwxd" path="res://scripts/actors/MonsterData.gd" id="3_cmmyu"]
+
+[sub_resource type="Resource" id="Resource_mlvn2"]
+script = ExtResource("1_ahrxr")
+item_scene = ExtResource("2_hhu3a")
+item_id = ""
+chance = 0.25
+min = 1
+max = 1
+item_type = 0
+metadata/_custom_type_script = "uid://d3tkrnb4wv7i4"
+
+[resource]
+script = ExtResource("3_cmmyu")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.6
+aggression = 1.0
+exp_reward = 10
+gold_reward = 1
+loot_table = Array[ExtResource("1_ahrxr")]([SubResource("Resource_mlvn2")])
+display_name = "ทหารผี"
+faction = &"neutral"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.0
+mp_regen = 0.0
+stamina_regen = 0.0
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"

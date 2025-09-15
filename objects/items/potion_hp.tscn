@@ -1,17 +1,40 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg1iehre17pov"]
+[gd_scene load_steps=12 format=3 uid="uid://cg1iehre17pov"]
 
-[ext_resource type="Script" uid="uid://chxpqvira46r2" path="res://objects/items/potion_hp.gd" id="1_p220i"]
-[ext_resource type="Script" uid="uid://can52838ccam" path="res://scripts/ItemData.gd" id="2_fakwr"]
+[ext_resource type="Script" uid="uid://chxpqvira46r2" path="res://objects/items/DropItem.gd" id="1_p220i"]
+[ext_resource type="Script" uid="uid://can52838ccam" path="res://scripts/inventory/ItemData.gd" id="2_fakwr"]
+[ext_resource type="Script" uid="uid://dmrf4ha2vdqaq" path="res://scripts/inventory/ItemEffect.gd" id="2_v1ccd"]
 [ext_resource type="Texture2D" uid="uid://bkxh8auvvd1d" path="res://assets/icons/potion_hp_s.png" id="3_n2n16"]
 [ext_resource type="Texture2D" uid="uid://cjwd3vsvehqt4" path="res://assets/images/spark_02.png" id="4_v1ccd"]
+
+[sub_resource type="Resource" id="Resource_nwvch"]
+script = ExtResource("2_v1ccd")
+states_add = Dictionary[StringName, float]({})
+states_mul = Dictionary[StringName, float]({})
+max_hp = 0
+max_mp = 0
+max_stamina = 0
+load_limit = 0
+attack = 0
+defense = 0
+speed = 0.0
+hp_regen = 0.0
+mp_regen = 0.0
+stamina_regen = 0.0
+crit_chance = 0.0
+crit_multiplier = 0.0
+metadata/_custom_type_script = "uid://dmrf4ha2vdqaq"
 
 [sub_resource type="Resource" id="Resource_17ic6"]
 script = ExtResource("2_fakwr")
 id = "potion_hp"
 name = "น้ำยาเพิ่มพลังชีวิต"
 description = "เมื่อกินแล้วจะเพิ่มพลังชีวิตอย่างรวดเร็ว"
-item_type = "consumable"
-max_stack = 99
+item_type = 0
+node_path = NodePath("")
+stack_size = 1
+weight = 1
+effect = SubResource("Resource_nwvch")
+meta = Dictionary[StringName, Variant]({})
 metadata/_custom_type_script = "uid://can52838ccam"
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwvch"]
@@ -21,7 +44,7 @@ direction = Vector3(0, 1, 0)
 spread = 180.0
 initial_velocity_min = 0.4
 initial_velocity_max = 1.0
-gravity = Vector3(0, -0.5, 0)
+gravity = Vector3(0, 0.5, 0)
 scale_min = 0.1
 scale_max = 0.5
 color = Color(0.631373, 1, 1, 1)
@@ -51,17 +74,19 @@ data = SubResource("Resource_17ic6")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.001)
 pixel_size = 0.005
-billboard = 2
+billboard = 1
 texture = ExtResource("3_n2n16")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Sprite3D"]
 amount = 4
-lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_nwvch")
 draw_pass_1 = SubResource("QuadMesh_8wlf4")
 
 [node name="Area3D" type="Area3D" parent="Sprite3D"]
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.126009, 0)
 shape = SubResource("SphereShape3D_2cvmw")
+
+[connection signal="body_entered" from="Sprite3D/Area3D" to="." method="_on_area_3d_body_entered"]

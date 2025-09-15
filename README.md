@@ -1,4 +1,4 @@
-# 3D Game Framework 
+# Jumpstart 3D: Fast path to learning 3D game development
 (สำหรับการเรียนการสอนวิชา Computer Game Development)
 
 ## 📖 รายละเอียดโครงการ

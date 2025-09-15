@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://beaydg4gdaguc"]
+
+[ext_resource type="PackedScene" uid="uid://bgs1imp15r0yn" path="res://objects/platforms/base_01.tscn" id="1_7j2xj"]
+[ext_resource type="Script" uid="uid://bbul7fulvfwf1" path="res://test/test_actor_3d.gd" id="1_bouax"]
+[ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/players/Player3D.tscn" id="3_bouax"]
+[ext_resource type="PackedScene" uid="uid://dlnfuiwdng0cm" path="res://characters/monsters/Skeleton1.tscn" id="4_6q1l6"]
+[ext_resource type="Resource" uid="uid://csve6l7kppj34" path="res://resources/monster/monster_axe.tres" id="5_lfqtd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0iqkm"]
+sky_top_color = Color(0.221046, 0.213568, 0.217879, 1)
+sky_horizon_color = Color(0.247467, 0.659627, 0.968765, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="Sky" id="Sky_sugp2"]
+sky_material = SubResource("ProceduralSkyMaterial_0iqkm")
+
+[sub_resource type="Environment" id="Environment_6q1l6"]
+background_mode = 1
+background_color = Color(0.0823529, 0.0862745, 0.0588235, 1)
+sky = SubResource("Sky_sugp2")
+ambient_light_source = 2
+ambient_light_color = Color(0.698021, 0.616415, 0.654218, 1)
+reflected_light_source = 1
+glow_intensity = 1.0
+glow_bloom = 0.3
+fog_light_color = Color(0.357311, 0.388105, 0.436507, 1)
+fog_sky_affect = 0.641
+volumetric_fog_emission = Color(1, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_bouax")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6q1l6")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.6092, 0)
+light_bake_mode = 0
+shadow_opacity = 0.8
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
+
+[node name="base01" parent="." instance=ExtResource("1_7j2xj")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -4.76837e-07, 0)
+collision_mask = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.954225, 0.299091, 0, -0.299091, 0.954225, 0, 2.28245, 3.1673)
+current = true
+
+[node name="Player3D" parent="." instance=ExtResource("3_bouax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15186, 1.43602, 2.51221)
+zoom_min = null
+zoom_max = null
+zoom_step = null
+zoom_lerp_speed = null
+sprint_mult = null
+accel_ground = null
+accel_air = null
+friction = null
+jump_velocity = null
+air_control = null
+coyote_time = null
+jump_buffer = null
+walk_speed = null
+run_speed = null
+
+[node name="Monsters" type="Node" parent="."]
+
+[node name="Monster3D2" parent="Monsters" instance=ExtResource("4_6q1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02601, 0.620428, 5.72938)
+data = ExtResource("5_lfqtd")
+
+[node name="Monster3D3" parent="Monsters" instance=ExtResource("4_6q1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8905, 0.620428, 5.72938)
+data = ExtResource("5_lfqtd")
+
+[node name="Monster3D4" parent="Monsters" instance=ExtResource("4_6q1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8905, 0.620428, 8.63824)
+data = ExtResource("5_lfqtd")
+
+[node name="Monster3D5" parent="Monsters" instance=ExtResource("4_6q1l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.977, 0.620428, 8.63824)
+data = ExtResource("5_lfqtd")

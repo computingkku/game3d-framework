@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7i5ag0kfhg07"]
+
+[ext_resource type="PackedScene" uid="uid://bi2nihnphq2ne" path="res://objects/items/DropItem.tscn" id="1_louyd"]
+[ext_resource type="ArrayMesh" uid="uid://ckb1gy4oxcowj" path="res://assets/icons/Spike_Shield.mesh" id="2_louyd"]
+
+[node name="Shield" instance=ExtResource("1_louyd")]
+data = null
+item_id = "knight_spike_shield"
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+visible = false
+
+[node name="Mesh" parent="Area3D/Item" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.981393, 0.192008, 0, -0.192008, 0.981393, 0, 0, 0)
+mesh = ExtResource("2_louyd")

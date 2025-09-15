@@ -1,0 +1,207 @@
+[gd_scene load_steps=14 format=3 uid="uid://dsd8t0cnsdilf"]
+
+[ext_resource type="Script" uid="uid://daq7kxs87x72k" path="res://characters/old/monster.gd" id="1_uhmye"]
+[ext_resource type="PackedScene" uid="uid://cfanhndu8s42x" path="res://characters/monsters/model/skeleton_warrior.tscn" id="1_xa4lr"]
+[ext_resource type="Script" uid="uid://cswu2nd40qwxd" path="res://scripts/actors/MonsterData.gd" id="2_wi4m3"]
+[ext_resource type="Texture2D" uid="uid://wegoivtenofa" path="res://assets/images/flame_02.png" id="4_2lp88"]
+
+[sub_resource type="Resource" id="Resource_2lp88"]
+script = ExtResource("2_wi4m3")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.6
+aggression = 1.0
+exp_reward = 10
+gold_reward = 1
+loot_table = []
+display_name = "ทหารกระดูก"
+faction = &"neutral"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.0
+mp_regen = 0.0
+stamina_regen = 0.0
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqx7q"]
+radius = 0.618135
+height = 2.46248
+
+[sub_resource type="Animation" id="Animation_2lp88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.34187, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wi4m3"]
+resource_name = "start"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.34187, 0), Vector3(0, 1.76489, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sxunx"]
+_data = {
+&"RESET": SubResource("Animation_2lp88"),
+&"start": SubResource("Animation_wi4m3")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sxunx"]
+angle_min = 1.07288e-05
+angle_max = 194.9
+direction = Vector3(1, 0, 1)
+spread = 65.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.8, 0)
+scale_max = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lp88"]
+transparency = 1
+albedo_color = Color(0.243137, 1, 0.0980392, 1)
+albedo_texture = ExtResource("4_2lp88")
+emission_enabled = true
+emission = Color(0.565187, 0.00387972, 0.953397, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yg5gy"]
+material = SubResource("StandardMaterial3D_2lp88")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2lp88"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Monster" type="CharacterBody3D" groups=["monster"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_uhmye")
+data = SubResource("Resource_2lp88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21606, 0)
+shape = SubResource("CapsuleShape3D_xqx7q")
+
+[node name="Skeleton_Warrior" parent="." instance=ExtResource("1_xa4lr")]
+
+[node name="Skeleton3D" parent="Skeleton_Warrior/Rig" index="0"]
+bones/3/rotation = Quaternion(8.27181e-25, 3.72529e-09, -2.75506e-40, 1)
+bones/4/position = Vector3(0.212007, 0.134132, 7.92996e-08)
+bones/4/rotation = Quaternion(-0.559906, -0.0608803, -0.643974, 0.517779)
+bones/5/rotation = Quaternion(3.65498e-08, -4.88301e-08, -0.494719, 0.869053)
+bones/5/scale = Vector3(1, 0.999999, 1)
+bones/6/rotation = Quaternion(1.44633e-08, 1.26672e-08, 0.0266581, 0.999645)
+bones/7/rotation = Quaternion(-0.321065, -0.325319, 0.145726, 0.87741)
+bones/8/position = Vector3(8.34843e-10, 0.0961252, -0.0575)
+bones/8/rotation = Quaternion(-3.6586e-09, 6.87811e-09, -0.707107, 0.707107)
+bones/9/position = Vector3(-0.212007, 0.134132, 8.6814e-08)
+bones/9/rotation = Quaternion(-0.618244, 0.0807287, 0.618012, 0.478873)
+bones/10/rotation = Quaternion(2.09853e-08, 5.12855e-08, 0.517939, 0.855417)
+bones/11/rotation = Quaternion(-4.94615e-10, -1.45974e-08, -0.0266581, 0.999645)
+bones/12/rotation = Quaternion(-0.319291, 0.300524, -0.22735, 0.869512)
+bones/13/position = Vector3(-1.5736e-08, 0.0961251, -0.0575)
+bones/13/rotation = Quaternion(-1.02444e-09, -4.24391e-09, 0.707107, 0.707107)
+bones/14/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/16/rotation = Quaternion(0.996185, 0.0479136, 0.0566427, -0.045939)
+bones/17/rotation = Quaternion(0.165014, 6.49414e-08, -1.11407e-07, 0.986291)
+bones/18/rotation = Quaternion(-0.533729, -0.260895, -1.72985e-05, 0.804405)
+bones/19/rotation = Quaternion(0.000263472, 0.920216, -0.391412, -5.96391e-05)
+bones/19/scale = Vector3(1, 0.999997, 1)
+bones/25/position = Vector3(0.213918, 0.0259903, 0.173866)
+bones/25/rotation = Quaternion(-0.705092, 0.0533355, 0.0533355, 0.705092)
+bones/27/position = Vector3(-1.11482e-08, 0.213436, -5.36347e-09)
+bones/27/rotation = Quaternion(-1.10961e-07, 0.391084, 0.920355, -2.67919e-08)
+bones/28/position = Vector3(-6.31128e-09, 0.16565, -7.10267e-09)
+bones/29/rotation = Quaternion(1, -8.27364e-11, 1.94627e-07, -7.45058e-09)
+bones/30/rotation = Quaternion(5.55113e-17, -6.74098e-17, -1.94669e-08, 1)
+bones/39/position = Vector3(0.520841, 0.788312, -0.0576373)
+bones/39/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
+bones/41/position = Vector3(-0.510844, 0.788312, 0.0597369)
+bones/41/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
+
+[node name="Skeleton_Warrior_Helmet" parent="Skeleton_Warrior/Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55687e-10, -0.0236468, -3.22638e-10, 0.99972, -7.48338e-09, 1.20227, -1.35927e-07)
+
+[node name="RightHand" parent="Skeleton_Warrior/Rig/Skeleton3D" index="10"]
+transform = Transform3D(-1.53513e-07, -0.149894, -0.988701, -0.999999, -5.36442e-07, 1.19665e-06, -1.10337e-06, 0.988701, -0.149894, -0.49106, 0.64103, 0.106595)
+
+[node name="Axe" parent="Skeleton_Warrior/Rig/Skeleton3D/RightHand" index="1"]
+visible = true
+
+[node name="BoneAttachment3D" parent="Skeleton_Warrior/Rig/Skeleton3D" index="11"]
+transform = Transform3D(3.53235e-07, 0.262864, 0.964832, 0.999999, 2.38419e-07, 1.46487e-06, 9.99575e-07, 0.964832, -0.262864, 0.507768, 0.636705, -0.0185215)
+
+[node name="AnimationEffect" type="AnimationPlayer" parent="."]
+root_node = NodePath("../OmniLight3D")
+libraries = {
+&"": SubResource("AnimationLibrary_sxunx")
+}
+autoplay = "start"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34187, 0)
+light_color = Color(0.109804, 1, 0.0980392, 1)
+omni_range = 2.07991
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473021, 0)
+process_material = SubResource("ParticleProcessMaterial_sxunx")
+draw_pass_1 = SubResource("QuadMesh_yg5gy")
+
+[node name="hp_bar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67386, 0)
+billboard = 2
+double_sided = false
+texture = SubResource("ViewportTexture_2lp88")
+
+[node name="name_label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07192, 0)
+pixel_size = 0.008
+billboard = 2
+double_sided = false
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.5
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "Name"
+font_size = 36
+outline_size = 5
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(100, 32)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+custom_minimum_size = Vector2(100, 32)
+offset_right = 4.0
+offset_bottom = 26.0
+
+[editable path="Skeleton_Warrior"]

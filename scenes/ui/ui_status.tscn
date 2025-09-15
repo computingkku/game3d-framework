@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4eiv6m7x80ps"]
+
+[ext_resource type="Script" uid="uid://bsrmus42su1hv" path="res://scenes/ui/ui_status.gd" id="1_573fw"]
+[ext_resource type="Theme" uid="uid://dfifin65ooqo2" path="res://resources/theme.tres" id="2_gsrvk"]
+[ext_resource type="Texture2D" uid="uid://dcptr6psop4ig" path="res://assets/icons/coin.png" id="3_2mnw6"]
+
+[sub_resource type="Gradient" id="Gradient_3t2b8"]
+colors = PackedColorArray(0, 0, 0, 1, 0.273873, 0.273873, 0.273873, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_up4qx"]
+gradient = SubResource("Gradient_3t2b8")
+width = 100
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_n62hp"]
+colors = PackedColorArray(0.316037, 0, 0.0698548, 1, 0.941176, 0.117647, 0.0117647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ttjl"]
+gradient = SubResource("Gradient_n62hp")
+height = 24
+
+[sub_resource type="Gradient" id="Gradient_2mnw6"]
+colors = PackedColorArray(0, 0, 0.509804, 1, 0.254902, 0.513726, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jt1ic"]
+gradient = SubResource("Gradient_2mnw6")
+
+[node name="UI_Status" type="CanvasLayer"]
+script = ExtResource("1_573fw")
+
+[node name="HealBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_right = 0.055
+anchor_bottom = 0.049
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 54.64
+offset_bottom = 18.248
+theme = ExtResource("2_gsrvk")
+value = 80.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_up4qx")
+texture_progress = SubResource("GradientTexture2D_1ttjl")
+
+[node name="Label" type="Label" parent="HealBar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -24.0
+offset_right = 41.0
+offset_bottom = -2.0
+text = "Health"
+metadata/_edit_lock_ = true
+
+[node name="lbHP" type="Label" parent="HealBar"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 92.0
+offset_bottom = 25.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="MpBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_right = 0.055
+anchor_bottom = 0.049
+offset_left = 24.0
+offset_top = 74.0
+offset_right = 55.64
+offset_bottom = 65.248
+theme = ExtResource("2_gsrvk")
+value = 80.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_up4qx")
+texture_progress = SubResource("GradientTexture2D_jt1ic")
+
+[node name="Label" type="Label" parent="MpBar"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -24.0
+offset_right = 41.0
+offset_bottom = -2.0
+text = "MP"
+metadata/_edit_lock_ = true
+
+[node name="lbAttack" type="Label" parent="."]
+offset_left = 183.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="lbAttack"]
+layout_mode = 0
+offset_top = -22.0
+offset_right = 53.0
+offset_bottom = 5.0
+text = "Attack"
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="lbDefense" type="Label" parent="."]
+offset_left = 258.0
+offset_top = 24.0
+offset_right = 311.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="lbDefense"]
+layout_mode = 0
+offset_top = -22.0
+offset_right = 53.0
+offset_bottom = 5.0
+text = "Defense"
+horizontal_alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="lbStamina" type="Label" parent="."]
+offset_left = 335.0
+offset_top = 24.0
+offset_right = 388.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="lbStamina"]
+layout_mode = 0
+offset_top = -22.0
+offset_right = 53.0
+offset_bottom = 5.0
+text = "Stamina"
+metadata/_edit_lock_ = true
+
+[node name="lbExp" type="Label" parent="."]
+offset_left = 510.0
+offset_top = 24.0
+offset_right = 563.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="lbExp"]
+layout_mode = 0
+offset_top = -22.0
+offset_right = 53.0
+offset_bottom = 5.0
+text = "EXP"
+metadata/_edit_lock_ = true
+
+[node name="lbGold" type="Label" parent="."]
+offset_left = 399.0
+offset_top = 24.0
+offset_right = 466.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="lbGold"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -22.0
+offset_right = 64.0
+offset_bottom = 5.0
+text = "Gold"
+horizontal_alignment = 2
+
+[node name="Coin" type="Sprite2D" parent="lbGold"]
+position = Vector2(84, 13)
+texture = ExtResource("3_2mnw6")

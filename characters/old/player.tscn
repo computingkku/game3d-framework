@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfovkdkx0qh0r"]
+
+[ext_resource type="PackedScene" uid="uid://bjy3a224vawan" path="res://characters/players/model/Knight.tscn" id="1_dvkud"]
+[ext_resource type="Script" uid="uid://bbnfbjvrba3b4" path="res://characters/old/player.gd" id="1_yalo1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yalo1"]
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_mask = 7
+script = ExtResource("1_yalo1")
+head_path = null
+zoom_min = null
+zoom_max = null
+zoom_step = null
+zoom_lerp_speed = null
+walk_speed = null
+run_speed = null
+sprint_mult = null
+accel_ground = null
+accel_air = null
+friction = null
+jump_velocity = null
+air_control = null
+coyote_time = null
+jump_buffer = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00186, 0)
+shape = SubResource("CapsuleShape3D_yalo1")
+
+[node name="Knight" parent="." instance=ExtResource("1_dvkud")]
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89903, -0.127955)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.954225, 0.299091, 0, -0.299091, 0.954225, 0, 1.239, 4.464)
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.360018, 0)
+light_color = Color(0.999419, 0.950618, 0.810217, 1)
+omni_range = 2.39242

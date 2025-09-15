@@ -1,0 +1,86 @@
+[
+  {
+	"id": "knight_sword1",
+	"name": "ดาบสั้น",
+	"node": "Rig/Skeleton3D/1H_Sword/1H_Sword",
+	"icon": "res://assets/icons/sword1.png",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 5 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "knight_sword2",
+	"name": "ดาบยาว",
+	"node": "Rig/Skeleton3D/2H_Sword/2H_Sword",
+	"icon": "res://assets/icons/sword2.png",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 8 } },
+	"meta": { "price": 30, "rarity": "common" }
+  },
+  {
+	"id": "knight_sword3",
+	"name": "ดาบธรรมดา",
+	"node": "Rig/Skeleton3D/1H_Sword_Offhand/1H_Sword_Offhand",
+	"value": 0.5,
+	"icon": "res://assets/icons/sword1.png",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "attack": 3 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "knight_round_shield",
+	"name": "โล่กลมธรรมดา",
+	"node": "Rig/Skeleton3D/Round_Shield/Round_Shield",
+	"icon": "res://assets/icons/round_shield.png",
+	"item_type": "SHIELD",
+	"effect": {"states_add":{"defense":2}},
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "knight_badge_shield",
+	"name": "โล่กลาง",
+	"node": "Rig/Skeleton3D/Badge_Shield/Badge_Shield",
+	"value": 1.2,
+	"icon": "res://assets/icons/bshield.png",
+	"description": "โล่พื้นฐานสำหรับอัศวินฝึกหัด",
+	"item_type": "SHIELD",
+	"effect": {"states_add":{"defense":3}},
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "knight_rect_shield",
+	"name": "โล่เหลี่ยม",
+	"node": "Rig/Skeleton3D/Rectangle_Shield/Rectangle_Shield",
+	"icon": "res://assets/icons/rshield.png",
+	"item_type": "SHIELD",
+	"effect": {"states_add":{"defense":4}},
+	"meta": { "price": 30, "rarity": "common" }
+  },
+  {
+	"id": "knight_spike_shield",
+	"name": "โล่หนาม",
+	"node": "Rig/Skeleton3D/Spike_Shield/Spike_Shield",
+	"icon": "res://assets/icons/spike_shield.png",
+	"item_type": "SHIELD",
+	"effect": {"states_add":{"defense":5,"attack":3}},
+	"meta": { "price": 40, "rarity": "common" }
+  },
+  {
+	"id": "knight_helmet",
+	"name": "หมวกอัศวินเหล็ก",
+	"node": "Rig/Skeleton3D/Knight_Helmet/Knight_Helmet",
+	"icon": "res://assets/icons/helmet.png",
+	"item_type": "EQUIPMENT",
+	"effect": {"states_add":{"defense":2,"speed":1}},
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "knight_cape",
+	"name": "ผ้าคลุมอัศวิน",
+	"node": "Rig/Skeleton3D/Knight_Cape",
+	"icon": "res://assets/icons/cape.png",
+	"item_type": "EQUIPMENT",
+	"effect": {"states_add":{"defense":1,"speed":2,"hp_regen":1}},
+	"meta": { "price": 25, "rarity": "common" }
+  }
+]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://b384c1nx40qd4"]
+
+[ext_resource type="PackedScene" uid="uid://bhfxjbkoqn8qa" path="res://characters/Actor3d.tscn" id="1_buqgk"]
+[ext_resource type="Script" uid="uid://b6pwxv80udokn" path="res://characters/monsters/Monster3D.gd" id="2_mk5j3"]
+[ext_resource type="Script" uid="uid://cswu2nd40qwxd" path="res://scripts/actors/MonsterData.gd" id="3_6vqkv"]
+[ext_resource type="Script" uid="uid://d3tkrnb4wv7i4" path="res://scripts/inventory/LootItem.gd" id="3_jpl3a"]
+[ext_resource type="Texture2D" uid="uid://wegoivtenofa" path="res://assets/images/flame_02.png" id="6_jpl3a"]
+
+[sub_resource type="Resource" id="Resource_6vqkv"]
+script = ExtResource("3_6vqkv")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.6
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("3_jpl3a")]([])
+display_name = "Monster"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.0
+mp_regen = 0.0
+stamina_regen = 0.0
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="Gradient" id="Gradient_aw3cj"]
+offsets = PackedFloat32Array(0, 0.515815, 1)
+colors = PackedColorArray(0.365402, 2.33735e-06, 1.29953e-06, 1, 1, 0, 0.0196078, 1, 1, 0.572549, 0.0392157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3pu3o"]
+gradient = SubResource("Gradient_aw3cj")
+
+[sub_resource type="Curve" id="Curve_mlvn2"]
+_data = [Vector2(0.00457666, 0.0786957), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gjhro"]
+curve = SubResource("Curve_mlvn2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kviit"]
+angle_min = 1.07288e-05
+angle_max = 100.0
+spread = 180.0
+flatness = 0.215
+initial_velocity_max = 1.0
+gravity = Vector3(0, 3, 0)
+scale_min = 0.2
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_gjhro")
+color = Color(1, 0.172549, 0, 1)
+color_ramp = SubResource("GradientTexture1D_3pu3o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4pen6"]
+transparency = 1
+albedo_color = Color(0.0980392, 0.878431, 0.0784314, 1)
+albedo_texture = ExtResource("6_jpl3a")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_57cbh"]
+material = SubResource("StandardMaterial3D_4pen6")
+
+[node name="Monster3D" groups=["monster"] instance=ExtResource("1_buqgk")]
+collision_layer = 2
+script = ExtResource("2_mk5j3")
+attack_interval = 2
+data = SubResource("Resource_6vqkv")
+wander_speed_scale = 0.6
+wander_turn_speed_deg = 180.0
+wander_min_time = 2.0
+wander_max_time = 4.0
+rebirth_time = 10
+weapon = ""
+shield = ""
+helmet = ""
+
+[node name="light" parent="." index="3"]
+light_color = Color(0.335009, 0.745048, 0.0782735, 1)
+light_energy = 0.5
+
+[node name="fire_effect" type="GPUParticles3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44226, 0.247778)
+emitting = false
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_kviit")
+draw_pass_1 = SubResource("QuadMesh_57cbh")
+
+[node name="Marker3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49531, 0)

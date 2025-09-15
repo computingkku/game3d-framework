@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2nbw46b3hmmn"]
+
+[ext_resource type="Script" uid="uid://bdbawhaoxtbwa" path="res://scripts/autoloads/AudioManager.gd" id="1_hux41"]
+[ext_resource type="AudioStream" uid="uid://dss76io87gunw" path="res://assets/sfx/pickup.wav" id="2_v6v0x"]
+[ext_resource type="AudioStream" uid="uid://c4h2m1kvf85yi" path="res://assets/sfx/attack.wav" id="3_4tesi"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_hux41")
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4tesi")
+bus = &"Sfx"
+
+[node name="Pick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v6v0x")
+volume_db = 1.938
+bus = &"Sfx"

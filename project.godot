@@ -11,18 +11,25 @@ config_version=5
 [application]
 
 config/name="Game3D Framework"
-run/main_scene="uid://dywx8iqsoxnyj"
+run/main_scene="uid://ctiykmp3wk4g6"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://dn43vdjyys5s1"
+config/icon="uid://ce1ev0cewbaef"
 
 [autoload]
 
-GameManager="*res://scripts/GameManager.gd"
-AudioManager="*res://scripts/AudioManager.gd"
+GameManager="*res://scripts/autoloads/GameManager.gd"
+AudioManager="*res://scenes/AudioManager.tscn"
+Types="*res://scripts/autoloads/Types.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/MetaMultimeshInstance3D/plugin.cfg", "res://addons/uv_tools/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://dfifin65ooqo2"
+theme/custom_font="uid://cph2fsybwyn3j"
 
 [input]
 
@@ -66,6 +73,11 @@ attack={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
 ]
 }
+inv={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -75,5 +87,7 @@ attack={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+camera/depth_of_field/depth_of_field_bokeh_quality=0
+environment/ssao/quality=0
+environment/ssil/quality=0
+environment/glow/upscale_mode=0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://2ejf8e0jqjmu"]
+
+[ext_resource type="PackedScene" uid="uid://bi2nihnphq2ne" path="res://objects/items/DropItem.tscn" id="1_okrsu"]
+[ext_resource type="Texture2D" uid="uid://dcptr6psop4ig" path="res://assets/icons/coin.png" id="2_l801j"]
+[ext_resource type="Script" uid="uid://can52838ccam" path="res://scripts/inventory/ItemData.gd" id="3_xecut"]
+
+[sub_resource type="Resource" id="Resource_okrsu"]
+script = ExtResource("3_xecut")
+id = "gold"
+name = "เหรียญทอง"
+description = "เหรียญทอง ใช้เพื่อซื้อสินค้า"
+item_type = 0
+icon = ExtResource("2_l801j")
+node_path = NodePath("")
+stack_size = 10000
+weight = 1
+meta = Dictionary[StringName, Variant]({})
+metadata/_custom_type_script = "uid://can52838ccam"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbl34"]
+albedo_color = Color(1, 0.733333, 0.0941176, 1)
+metallic = 0.83
+emission_enabled = true
+emission = Color(0.75043, 0.340108, 0.111731, 1)
+emission_energy_multiplier = 1.11
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_okrsu"]
+material = SubResource("StandardMaterial3D_vbl34")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.08
+radial_segments = 16
+rings = 2
+
+[node name="Coin" instance=ExtResource("1_okrsu")]
+data = SubResource("Resource_okrsu")
+count = 10
+
+[node name="Mesh" parent="Area3D/Item" index="0"]
+transform = Transform3D(0.882222, 0.470535, -0.0167687, -0.45856, 0.850601, -0.257296, -0.106803, 0.234681, 0.966187, 0, 0, 0)
+mesh = SubResource("CylinderMesh_okrsu")

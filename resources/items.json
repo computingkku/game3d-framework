@@ -1,0 +1,9 @@
+[
+  {
+	"id": "gold",
+	"name": "เหรียญทอง",
+	"icon": "res://assets/icons/coin.png",
+	"item_type": "CONSUMABLE",
+	"effect": { "states_add": { "gold": 1 } }
+  }
+]

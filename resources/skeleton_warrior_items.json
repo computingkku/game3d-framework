@@ -1,0 +1,43 @@
+[
+  {
+	"id" : "blade",
+	"name": "มีดกระดูก",
+	"node": "Rig/Skeleton3D/RightHand/Blade",
+	"icon": "res://assets/icons/blade.png",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 2 } }
+  },
+  {
+	"id" : "axe",
+	"name": "ขวานปีศาจ",
+	"node": "Rig/Skeleton3D/RightHand/Axe",
+	"icon": "res://assets/icons/axe.png",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 2, "speed": -2 } }
+  },
+
+  {
+	"id" : "shiled_small",
+	"name": "โล่กระดูก",
+	"node": "Rig/Skeleton3D/BoneAttachment3D/Skeleton_Shield_Small_A",
+	"icon": "res://assets/icons/skeleton_shield.png",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "defense": 2 } }
+  },
+  {
+	"id" : "shiled_large",
+	"name": "โล่หัวกระโหลก",
+	"node": "Rig/Skeleton3D/BoneAttachment3D/Skeleton_Shield_Large_A",
+	"icon": "res://assets/icons/skeleton_shield_big.png",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "defense": 2, "attack": 1 } }
+  },
+  {
+	"id" : "helmet",
+	"name": "หมวกนักรบกระดูก",
+	"node": "Rig/Skeleton3D/Skeleton_Warrior_Helmet/Skeleton_Warrior_Helmet",
+	"icon": "res://assets/icons/skeleton_helmet.png",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "defense": 1, "speed": 2 } }
+  }
+]

@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0v2gvjfnu8xw"]
+
+[ext_resource type="PackedScene" uid="uid://bhfxjbkoqn8qa" path="res://characters/Actor3d.tscn" id="1_5pq2v"]
+[ext_resource type="Script" uid="uid://b2mhscdhyml6f" path="res://characters/players/Player3D.gd" id="2_nu3gx"]
+[ext_resource type="Script" uid="uid://bb71vjxt7jt1w" path="res://scripts/actors/PlayerData.gd" id="3_kfb8l"]
+[ext_resource type="PackedScene" uid="uid://bjy3a224vawan" path="res://characters/players/model/Knight.tscn" id="3_uf3nl"]
+[ext_resource type="Script" uid="uid://cdhi01u1j4rbc" path="res://scripts/inventory/InventoryData.gd" id="4_b4qom"]
+[ext_resource type="Script" uid="uid://muy61rjyg71k" path="res://scripts/inventory/InventoryItem.gd" id="5_ixxos"]
+
+[sub_resource type="Resource" id="Resource_b4qom"]
+script = ExtResource("3_kfb8l")
+level = 1
+exp = 0
+exp_to_next = 100
+stat_points = 0
+load_limit = 50.0
+display_name = "อัศวินแห่งแสง"
+faction = &"player"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 20.0
+defense = 5.0
+speed = 1.0
+hp_regen = 1.0
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://bb71vjxt7jt1w"
+
+[sub_resource type="Resource" id="Resource_rm7af"]
+script = ExtResource("4_b4qom")
+slots = Dictionary[String, ExtResource("5_ixxos")]({})
+metadata/_custom_type_script = "uid://cdhi01u1j4rbc"
+
+[node name="Player3D" groups=["player"] instance=ExtResource("1_5pq2v")]
+script = ExtResource("2_nu3gx")
+data = SubResource("Resource_b4qom")
+head_path = NodePath("Head")
+inventory = SubResource("Resource_rm7af")
+zoom_min = 0.5
+zoom_max = 3
+zoom_step = 0.3
+zoom_lerp_speed = 10.0
+sprint_mult = 1.4
+accel_ground = 12.0
+accel_air = 4.0
+friction = 10.0
+jump_velocity = 9.0
+air_control = 0.6
+coyote_time = 0.12
+jump_buffer = 0.12
+model_scene = ExtResource("3_uf3nl")
+
+[node name="CapsuleMesh" parent="." index="1"]
+visible = false
+
+[node name="label_name" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.99552, 0)
+outline_modulate = Color(1, 1, 0, 1)
+
+[node name="light" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933527, -0.0207953)
+
+[node name="bar_hp" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.66061, 0.00375533)
+
+[node name="Head" type="Node3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89903, -0.127955)
+
+[node name="Camera3D" type="Camera3D" parent="Head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.954225, 0.299091, 0, -0.299091, 0.954225, 0, 1.239, 4.464)
+current = true
+
+[node name="Knight" parent="Model" index="0" instance=ExtResource("3_uf3nl")]
+
+[node name="Marker3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93327, 0)

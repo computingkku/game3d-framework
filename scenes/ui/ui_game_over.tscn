@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4b3ftfid3k5"]
+
+[ext_resource type="Script" uid="uid://dgdtwuhdj7dg0" path="res://scenes/ui/ui_game_over.gd" id="1_0lwui"]
+[ext_resource type="PackedScene" uid="uid://dwidoapgt7cqy" path="res://scenes/ui/knight_pose3d.tscn" id="2_h4y5b"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h4y5b"]
+viewport_path = NodePath("ColorRect/SubViewport")
+
+[node name="UIGameOver" type="CanvasLayer"]
+script = ExtResource("1_0lwui")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.5
+offset_top = -173.5
+offset_right = 289.5
+offset_bottom = 173.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.658824)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 7.5
+offset_top = 54.0
+offset_right = 258.5
+offset_bottom = 146.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.670588, 0.301961, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 70
+text = "Game Over"
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = 4.0
+offset_right = 201.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Play Again"
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+position = Vector2(141, 206)
+scale = Vector2(0.429688, 0.449219)
+texture = SubResource("ViewportTexture_h4y5b")
+
+[node name="SubViewport" type="SubViewport" parent="ColorRect"]
+
+[node name="Knight" parent="ColorRect/SubViewport" instance=ExtResource("2_h4y5b")]
+loop = 2
+
+[node name="Skeleton3D" parent="ColorRect/SubViewport/Knight/Rig" index="0"]
+bones/5/rotation = Quaternion(3.65498e-08, -4.88301e-08, -0.494719, 0.869053)
+bones/17/rotation = Quaternion(-0.319291, 0.300524, -0.22735, 0.869512)
+bones/24/rotation = Quaternion(0.996185, 0.0479136, 0.0566427, -0.045939)
+bones/25/rotation = Quaternion(0.165014, 6.49414e-08, -1.11407e-07, 0.986291)
+bones/26/rotation = Quaternion(-0.533729, -0.260895, -1.72985e-05, 0.804405)
+bones/27/rotation = Quaternion(-2.32086e-08, 0.920355, -0.391084, 7.25743e-08)
+bones/30/rotation = Quaternion(-0.559039, 0.114513, -0.00862763, 0.82115)
+bones/33/position = Vector3(0.213918, 0.0259903, 0.173866)
+bones/33/rotation = Quaternion(-0.705092, 0.0533355, 0.0533355, 0.705092)
+bones/35/position = Vector3(-1.11482e-08, 0.213436, -5.36347e-09)
+bones/35/rotation = Quaternion(-1.10961e-07, 0.391084, 0.920355, -2.67919e-08)
+bones/36/position = Vector3(-6.31128e-09, 0.16565, -7.10267e-09)
+bones/37/rotation = Quaternion(1, -8.27364e-11, 1.94627e-07, -7.45058e-09)
+
+[node name="1H_Sword_Offhand" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="0"]
+transform = Transform3D(1.74e-07, 0.262863, 0.964832, 0.999999, -6.82646e-07, 3.2981e-07, 9.64381e-07, 0.964832, -0.262864, 0.51224, 0.636705, -0.00210786)
+
+[node name="Badge_Shield" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="1"]
+transform = Transform3D(1.96417e-07, 0.262863, 0.964832, 0.999999, -3.21783e-06, 9.97272e-07, 3.58586e-06, 0.964833, -0.262863, 0.662643, 0.636705, -0.0430844)
+
+[node name="Rectangle_Shield" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="2"]
+transform = Transform3D(1.96417e-07, 0.262863, 0.964832, 0.999999, -3.21783e-06, 9.97272e-07, 3.58586e-06, 0.964833, -0.262863, 0.662643, 0.636705, -0.0430844)
+
+[node name="Round_Shield" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="3"]
+transform = Transform3D(1.96417e-07, 0.262863, 0.964832, 0.999999, -3.21783e-06, 9.97272e-07, 3.58586e-06, 0.964833, -0.262863, 0.662643, 0.636705, -0.0430844)
+
+[node name="Spike_Shield" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="4"]
+transform = Transform3D(1.96417e-07, 0.262863, 0.964832, 0.999999, -3.21783e-06, 9.97272e-07, 3.58586e-06, 0.964833, -0.262863, 0.662643, 0.636705, -0.0430844)
+
+[node name="1H_Sword" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="5"]
+transform = Transform3D(4.54922e-07, -0.149894, 0.988701, 0.999999, -5.03832e-07, -8.34465e-07, 8.8961e-07, 0.988701, 0.149894, -0.496054, 0.64103, 0.139528)
+
+[node name="2H_Sword" parent="ColorRect/SubViewport/Knight/Rig/Skeleton3D" index="6"]
+transform = Transform3D(4.39182e-07, -0.149894, 0.988701, 0.999999, -5.18565e-07, -8.20779e-07, 9.02126e-07, 0.988701, 0.149894, -0.496054, 0.64103, 0.139528)
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
+
+[editable path="ColorRect/SubViewport/Knight"]
