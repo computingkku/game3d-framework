@@ -71,7 +71,7 @@ func get_stat(key:String,defval=0) -> float:
 		if defval!=0: v=defval 
 		else: 
 			v=get(key)
-			if v!=null: v=float()
+			if v!=null: v=float(v)
 			else: v=0
 	return v
 

@@ -93,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	_time_since_play_sound  += delta
 	_time_since_attack += delta	
 	_time_since_damage += delta
-	var v = Vector2(velocity.x,velocity.y)
+	var v = Vector2(velocity.x,velocity.z)
 	if _time_since_damage <0.5 : return	
 	# ตรวจพื้น
 	if is_on_floor() && _time_since_attack>1.0:
@@ -142,9 +142,7 @@ func _physics_process(delta: float) -> void:
 		if action!="": 
 			_time_since_play_action=0
 			model.play(action)
-			prev_action = action
-			action=""	
-			
+			prev_action = action			
 			if is_on_floor() and !walk_sound.playing and _time_since_play_sound>0.8:
 				if action=="walk" :
 					walk_sound.pitch_scale = 2
@@ -154,7 +152,8 @@ func _physics_process(delta: float) -> void:
 					walk_sound.pitch_scale = 1.5
 					walk_sound.play()	
 					_time_since_play_sound=0
-					
+			action=""	
+		
 	move_and_slide()
 
 # ===== Signals =====
