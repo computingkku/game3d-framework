@@ -1,13 +1,10 @@
-[gd_scene load_steps=32 format=4 uid="uid://cddijcwmll5ym"]
+[gd_scene load_steps=29 format=4 uid="uid://cddijcwmll5ym"]
 
 [ext_resource type="PackedScene" uid="uid://bgs1imp15r0yn" path="res://objects/platforms/base_01.tscn" id="1_mllrp"]
-[ext_resource type="PackedScene" uid="uid://dqjqqqbl8eneo" path="res://assets/glb/items/Stone_Chunks_Large.gltf" id="2_esy05"]
-[ext_resource type="PackedScene" uid="uid://cmniswypgpxxf" path="res://assets/glb/items/Wood_Planks_Stack_Large.gltf" id="3_ld3ra"]
 [ext_resource type="PackedScene" uid="uid://880hlfbc4fsy" path="res://assets/glb/forest/Rock_1_G_Color1.gltf" id="4_7qmuc"]
 [ext_resource type="PackedScene" uid="uid://dio0sutseqd01" path="res://assets/glb/forest/Rock_1_H_Color1.gltf" id="5_qs0bo"]
 [ext_resource type="PackedScene" uid="uid://bxmgpx33oi8k5" path="res://assets/glb/forest/Rock_1_I_Color1.gltf" id="6_8tfb6"]
 [ext_resource type="PackedScene" uid="uid://bolbyxavk7qvu" path="res://assets/glb/forest/Rock_1_N_Color1.gltf" id="7_djlpg"]
-[ext_resource type="PackedScene" uid="uid://2vdql5w7ohgx" path="res://assets/glb/items/Stone_Bricks_Stack_Large.gltf" id="8_gxutu"]
 [ext_resource type="PackedScene" uid="uid://bcmw03cs6wms" path="res://assets/glb/forest/Grass_1_D_Color1.gltf" id="9_vgub5"]
 [ext_resource type="PackedScene" uid="uid://owi4x22m430l" path="res://assets/glb/forest/Grass_2_D_Color1.gltf" id="10_4xc1v"]
 [ext_resource type="PackedScene" uid="uid://8b7w0i2vdayk" path="res://assets/glb/forest/Tree_1_A_Color1.gltf" id="11_h047y"]
@@ -87,24 +84,6 @@ transform = Transform3D(8.07262, 0, -3.97905, -0.328737, 8.96923, -0.666935, 3.9
 
 [node name="Cube" parent="base02/platform02" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_tbgi4")
-
-[node name="Stone_Chunks_Large2" parent="base02/platform02" index="1" instance=ExtResource("2_esy05")]
-transform = Transform3D(0.448479, -0.0182632, 0.220303, -5.35196e-09, 0.498291, 0.0413085, -0.221058, -0.0370519, 0.446946, -0.535692, 0.582848, 0.680247)
-
-[node name="Stone_Chunks_Large3" parent="base02/platform02" index="2" instance=ExtResource("2_esy05")]
-transform = Transform3D(0.0996619, -0.00405848, 0.0489561, -2.28934e-09, 0.110731, 0.00917966, -0.0491241, -0.00823376, 0.0993212, 1.16089, 0.619689, 0.73831)
-
-[node name="Wood_Planks_Stack_Large2" parent="base02/platform02" index="3" instance=ExtResource("3_ld3ra")]
-transform = Transform3D(0.0996619, -0.00405848, 0.0489561, -2.28934e-09, 0.110731, 0.00917966, -0.0491241, -0.00823376, 0.0993212, 0.0355687, 0.617593, -1.14105)
-
-[node name="Stone_Chunks_Large4" parent="base02/platform02" index="4" instance=ExtResource("2_esy05")]
-transform = Transform3D(0.896957, -0.0365263, 0.440606, -1.07039e-08, 0.996581, 0.0826169, -0.442117, -0.0741039, 0.893891, -2.3514, 0.536587, -1.96565)
-
-[node name="Stone_Chunks_Large5" parent="base02/platform02" index="5" instance=ExtResource("2_esy05")]
-transform = Transform3D(0.585957, -0.0365264, -0.809519, 0.0814268, 0.996581, 0.0139726, 0.806241, -0.0741039, 0.586928, -3.09253, -0.261581, -5.58851)
-
-[node name="Stone_Chunks_Large6" parent="base02/platform02" index="6" instance=ExtResource("2_esy05")]
-transform = Transform3D(0.665186, -0.0365263, 0.745784, -0.0310932, 0.996581, 0.0765426, -0.74603, -0.0741039, 0.661776, -1.55859, -0.472164, -9.17661)
 
 [node name="base03" parent="." instance=ExtResource("1_mllrp")]
 transform = Transform3D(6.06592, -0.271643, -6.64311, -0.328737, 8.96923, -0.666934, 6.64053, 0.692156, 6.03526, -13.0958, 0.338431, -55.1849)
@@ -232,9 +211,6 @@ debug_color = Color(0.929412, 0.352941, 0.415686, 0.894118)
 transform = Transform3D(-0.921138, 0, 0.389236, 0, 1, 0, -0.389236, 0, -0.921138, -45.261, 0, 20.177)
 shape = SubResource("BoxShape3D_vxglm")
 debug_color = Color(0.929412, 0.352941, 0.415686, 0.894118)
-
-[node name="Stone_Bricks_Stack_Large2" parent="Walls" instance=ExtResource("8_gxutu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9892, 1.50747, 11.5174)
 
 [node name="decoration" type="Node3D" parent="."]
 

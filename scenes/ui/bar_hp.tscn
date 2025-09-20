@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuivyor1pknw8"]
+
+[ext_resource type="Shader" uid="uid://bi4eax54yd1bh" path="res://scripts/shaders/ProgressBar.gdshader" id="1_pw20h"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jdsyw"]
+size = Vector2(1, 0.15)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpude"]
+render_priority = 0
+shader = ExtResource("1_pw20h")
+shader_parameter/use_billboard = true
+shader_parameter/color = Color(0.476192, 0.746745, 0.29069, 0.8)
+shader_parameter/background_color = Color(0.4, 0.4, 0.4, 0.8)
+
+[node name="hp_bar" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_jdsyw")
+surface_material_override/0 = SubResource("ShaderMaterial_mpude")

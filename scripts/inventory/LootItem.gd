@@ -3,25 +3,17 @@
 class_name LootItem
 extends Resource
 
-@export var item_scene : PackedScene 
-@export var item_data: ItemData
 @export var item_id : String 
 @export var chance:float =0.25
 @export var min: int = 1
 @export var max: int = 1
-@export var item_type : Types.ItemType 
 
 func new_instace(actor: Node3D):
-	if !item_scene: 
-		if item_type == Types.ItemType.WEAPON : 
-			item_scene = Types.drop_weapon
-		else: 
-			item_scene = Types.drop_item
-	var item = item_scene.instantiate()
+	if item_id=="": return
+	var data = GameManager.get_item(item_id)
+	var item = preload("res://objects/DropItem.tscn").instantiate()
+	item.item_id =  item_id
 	var count = randi_range(min,max)
-	print("new_instace ",item)
-	if item_data: item.set("data",item_data)
-	if item_id!="": item.set("item_id",item_id)
 	var pos1 = actor.position + Vector3(0,-1,0)
 	var pos2 = actor.position + Vector3(0,2,0)
 	var pos3 = actor.position + Vector3(randf_range(-3,3),0,randf_range(-3,3))

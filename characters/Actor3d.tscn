@@ -1,25 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhfxjbkoqn8qa"]
+[gd_scene load_steps=13 format=3 uid="uid://bhfxjbkoqn8qa"]
 
 [ext_resource type="Script" uid="uid://61k631ol6jtb" path="res://scripts/actors/Actor3D.gd" id="1_1vj7a"]
-[ext_resource type="Shader" uid="uid://bi4eax54yd1bh" path="res://scripts/shaders/ProgressBar.gdshader" id="2_ykgun"]
+[ext_resource type="PackedScene" uid="uid://cuivyor1pknw8" path="res://scenes/ui/bar_hp.tscn" id="2_jdsyw"]
 [ext_resource type="AudioStream" uid="uid://de4gw5lf53lod" path="res://assets/sfx/step.wav" id="3_iy33i"]
 [ext_resource type="AudioStream" uid="uid://c4h2m1kvf85yi" path="res://assets/sfx/attack.wav" id="4_jdsyw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hk0x4"]
-radius = 0.544541
-height = 2.0326
+radius = 0.6
+height = 2.2
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1vj7a"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_iy33i"]
-size = Vector2(1, 0.2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdsyw"]
-render_priority = 0
-shader = ExtResource("2_ykgun")
-shader_parameter/use_billboard = true
-shader_parameter/color = Color(0, 0.8, 0, 0.8)
-shader_parameter/background_color = Color(0.4, 0.4, 0.4, 0.8)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ykgun"]
 emission_shape = 1
@@ -37,42 +27,52 @@ damping_max = 2.0
 scale_min = 0.2
 scale_over_velocity_max = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fnojs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iy33i"]
 albedo_color = Color(1, 0.0235294, 0.0352941, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_iy33i"]
-material = SubResource("StandardMaterial3D_fnojs")
+material = SubResource("StandardMaterial3D_iy33i")
 radius = 0.1
 height = 0.2
 radial_segments = 8
 rings = 8
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7q83"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.392157, 0.172549, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jdsyw"]
+material = SubResource("StandardMaterial3D_p7q83")
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kwq54"]
+radius = 0.27
+
 [node name="Actor3D" type="CharacterBody3D" groups=["actor"]]
 collision_mask = 7
 script = ExtResource("1_1vj7a")
 
+[node name="label_name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6756, 0)
+billboard = 1
+text = "Test"
+
+[node name="bar_hp" parent="label_name" instance=ExtResource("2_jdsyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2879, 0)
+skeleton = NodePath("../..")
+
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02073, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12083, 0)
 shape = SubResource("CapsuleShape3D_hk0x4")
 
 [node name="CapsuleMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03443, 0)
 mesh = SubResource("CapsuleMesh_1vj7a")
-
-[node name="label_name" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62198, 0)
-visible = false
-pixel_size = 0.008
-billboard = 2
-double_sided = false
-fixed_size = true
-alpha_antialiasing_edge = 0.5
-texture_filter = 1
-modulate = Color(0, 2.88785e-07, 0.501557, 1)
-outline_modulate = Color(0.912289, 0.912289, 0.912289, 1)
-text = "Name"
-font_size = 36
-outline_size = 5
 
 [node name="light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.177598, 0)
@@ -80,12 +80,6 @@ light_color = Color(0.999419, 0.950618, 0.810217, 1)
 light_energy = 0.8
 light_size = 1.0
 omni_range = 2.39242
-
-[node name="bar_hp" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29908, 0.00375533)
-instance_shader_parameters/health = 0.289
-mesh = SubResource("QuadMesh_iy33i")
-surface_material_override/0 = SubResource("ShaderMaterial_jdsyw")
 
 [node name="damage_effect" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0474854, 0.681732, 0)
@@ -110,15 +104,20 @@ stream = ExtResource("3_iy33i")
 max_distance = 15.0
 bus = &"Sfx"
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 27.0
-text = "TEST"
-horizontal_alignment = 1
-
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.66422, 0)
 
+[node name="AttackArea" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="Sphere" type="MeshInstance3D" parent="AttackArea"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_jdsyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_kwq54")
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

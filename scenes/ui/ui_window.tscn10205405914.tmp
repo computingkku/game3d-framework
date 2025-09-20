@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy1qunts4tmjv"]
+
+[ext_resource type="Script" uid="uid://dgp5dyj448kfl" path="res://scenes/ui/ui_window.gd" id="1_rld0n"]
+[ext_resource type="Theme" uid="uid://dfifin65ooqo2" path="res://resources/theme.tres" id="2_u6mps"]
+
+[node name="ui_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rld0n")
+
+[node name="inventory_window" type="Window" parent="."]
+title = "Inventory"
+position = Vector2i(20, 50)
+size = Vector2i(200, 200)
+min_size = Vector2i(200, 200)
+theme = ExtResource("2_u6mps")
+
+[node name="equipment_window" type="Window" parent="."]
+title = "Equipment"
+position = Vector2i(0, 36)
+
+[node name="status_window" type="Window" parent="."]
+position = Vector2i(0, 36)
+
+[node name="quest_window" type="Window" parent="."]
+position = Vector2i(0, 36)
+
+[connection signal="close_requested" from="inventory_window" to="." method="_on_window_close_requested"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy1qunts4tmjv"]
+
+[ext_resource type="Script" uid="uid://dgp5dyj448kfl" path="res://scenes/ui/ui_window.gd" id="1_rld0n"]
+[ext_resource type="Theme" uid="uid://dfifin65ooqo2" path="res://resources/theme.tres" id="2_u6mps"]
+[ext_resource type="PackedScene" uid="uid://5ue7icqjp56r" path="res://scenes/ui/equipment_window.tscn" id="3_u6mps"]
+
+[node name="ui_window" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u6mps")
+script = ExtResource("1_rld0n")
+
+[node name="inventory_window" type="Window" parent="."]
+title = "Inventory"
+position = Vector2i(20, 50)
+size = Vector2i(500, 250)
+min_size = Vector2i(200, 200)
+
+[node name="HSplitContainer" type="HSplitContainer" parent="inventory_window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="inventory_window/HSplitContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="inventory_window/HSplitContainer/ScrollContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="inventory_window/HSplitContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="inventory_window/HSplitContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="inventory_window/HSplitContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="inventory_window/HSplitContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Control" type="VBoxContainer" parent="inventory_window/HSplitContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="inventory_window/HSplitContainer/Control"]
+layout_mode = 2
+text = "Name"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="inventory_window/HSplitContainer/Control"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+text = "Detail "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="inventory_window/HSplitContainer/Control"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="inventory_window/HSplitContainer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+text = "Use"
+
+[node name="Button2" type="Button" parent="inventory_window/HSplitContainer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+text = "Take Off"
+
+[node name="equipment_window" parent="." instance=ExtResource("3_u6mps")]
+
+[node name="status_window" type="Window" parent="."]
+position = Vector2i(300, 500)
+
+[node name="quest_window" type="Window" parent="."]
+position = Vector2i(10, 500)
+
+[connection signal="close_requested" from="inventory_window" to="." method="_on_window_close_requested"]

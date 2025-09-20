@@ -18,7 +18,8 @@ extends Resource
 # stack/น้ำหนัก
 @export_range(1, 9999) var stack_size: int = 10000
 @export_range(0, 9999) var weight: int = 1
-
+@export var heavy: bool = false
+@export var hand: String = "right"
 # เอฟเฟกต์ของไอเท็มนี้ (ถ้ามี)
 @export var effect: ItemEffect 
 
@@ -26,6 +27,7 @@ extends Resource
 @export var meta: Dictionary[StringName, Variant] = {}
 
 var node : Node3D
+var scene : PackedScene
 
 func is_equipable() -> bool:
 	return item_type in [Types.ItemType.WEAPON,Types.ItemType.SHIELD, Types.ItemType.EQUIPMENT]

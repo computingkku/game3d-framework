@@ -32,7 +32,7 @@ func add_item(item: ItemData, count: int = 1):
 func use_item(actor: CharacterData, item_id: String) -> bool:
 	if slots.has(item_id):
 		var slot = slots[item_id]
-		print(item_id,slot.data.name,slot.count)
+#		print(item_id,slot.data.name,slot.count)
 		if slot.data.is_consumable() and slot.count>0:
 			if remove_item(item_id,1):
 				slot.data.effect.update_stats(actor)		

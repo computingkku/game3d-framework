@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://btvtow3dncewt"]
+
+[node name="InventoryPanel" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -331.0
+offset_bottom = 480.0
+grow_horizontal = 0
+pivot_offset = Vector2(5, 5)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(300, 480)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="Scroll"]
+custom_minimum_size = Vector2(300, 480)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="WeaponsLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+text = "Weapons"
+
+[node name="WeaponsGrid" type="HFlowContainer" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="ShieldsLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+text = "Shields"
+
+[node name="ShieldsGrid" type="HFlowContainer" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="PropsLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+text = "Accessories"
+
+[node name="PropsGrid" type="HFlowContainer" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="ResourceLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+text = "Resources"
+
+[node name="OtherGrid" type="HFlowContainer" parent="Scroll/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6

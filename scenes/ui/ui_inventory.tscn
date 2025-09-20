@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cicyhltpma3q5"]
+[gd_scene load_steps=4 format=3 uid="uid://cicyhltpma3q5"]
 
 [ext_resource type="Script" uid="uid://d2lwj6t1q7nl1" path="res://scenes/ui/ui_inventory.gd" id="1_nt7q6"]
+[ext_resource type="PackedScene" uid="uid://btvtow3dncewt" path="res://scenes/ui/inventory_panel.tscn" id="2_gp0mo"]
 [ext_resource type="Texture2D" uid="uid://dig87jibye58q" path="res://assets/icons/close-30.png" id="2_x4jx1"]
 
 [node name="Inventory" type="Node2D"]
@@ -8,79 +9,7 @@ script = ExtResource("1_nt7q6")
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="InventoryPanel" type="PanelContainer" parent="Canvas"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -331.0
-offset_bottom = 480.0
-grow_horizontal = 0
-pivot_offset = Vector2(5, 5)
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="Scroll" type="ScrollContainer" parent="Canvas/InventoryPanel"]
-custom_minimum_size = Vector2(300, 480)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="VBox" type="VBoxContainer" parent="Canvas/InventoryPanel/Scroll"]
-custom_minimum_size = Vector2(300, 480)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_constants/separation = 8
-
-[node name="Title" type="Label" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-text = "Inventory"
-horizontal_alignment = 1
-
-[node name="WeaponsLabel" type="Label" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-text = "Weapons"
-
-[node name="WeaponsGrid" type="GridContainer" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
-columns = 4
-
-[node name="HSeparator" type="HSeparator" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="ShieldsLabel" type="Label" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-text = "Shields"
-
-[node name="ShieldsGrid" type="GridContainer" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
-columns = 4
-
-[node name="PropsLabel" type="Label" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-text = "Accessories"
-
-[node name="PropsGrid" type="GridContainer" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
-columns = 4
-
-[node name="ResourceLabel" type="Label" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-text = "Resources"
-
-[node name="OtherGrid" type="GridContainer" parent="Canvas/InventoryPanel/Scroll/VBox"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
-columns = 4
+[node name="InventoryPanel" parent="Canvas" instance=ExtResource("2_gp0mo")]
 
 [node name="MarginContainer" type="MarginContainer" parent="Canvas"]
 custom_minimum_size = Vector2(300, 48)

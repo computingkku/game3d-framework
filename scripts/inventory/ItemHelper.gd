@@ -69,7 +69,7 @@ static func load_icon(path,w=28,h=28) -> Texture2D:
 	return ImageTexture.create_from_image(image)
 	
 static func _item_from_dict(d: Dictionary, owner: Node=null) -> ItemData:
-	var item = ItemData.new()
+	var item :ItemData = ItemData.new()
 	# Required
 	item.id = str(d.get("id", ""))
 	item.name = str(d.get("name", item.id))
@@ -77,21 +77,30 @@ static func _item_from_dict(d: Dictionary, owner: Node=null) -> ItemData:
 	item.description = str(d.get("description", ""))
 	# Enum item_type can be string ("WEAPON") or int (1)
 	item.item_type = _parse_item_type(d.get("item_type", "CONSUMABLE"))
-	# icon / mesh paths (optional, must be valid resource paths)
-	if d.has("icon"):
-		item.icon = load_icon(d["icon"])
-	if owner and d.has("node"):
-		item.node = owner.get_node(d["node"])	
-	# stack / weight
-	if d.has("stack_size"):
-		item.stack_size = int(d["stack_size"])
-	if d.has("weight"):
-		item.weight = int(d["weight"])
+	var hand = "right"
+	if item.item_type == Types.ItemType.SHIELD : hand="left"
 	
+	var tscn_path = "res://objects/items/"+item.id+".tscn"
+	if FileAccess.file_exists(tscn_path):
+		item.scene = load(tscn_path)
+	
+	var icon_path = "res://objects/items/"+item.id+"_icon.png"
+	if FileAccess.file_exists(icon_path):
+		item.icon =  load_icon(icon_path)
+	else:	
+		# icon / mesh paths (optional, must be valid resource paths)
+		if d.has("icon"):
+			item.icon = load_icon(d["icon"])
+		if owner and d.has("node"):
+			item.node = owner.get_node(d["node"])	
+		# stack / weight
+	item.stack_size = int(d.get("stack_size",10000))
+	item.weight 	= int(d.get("weight",1))
+	item.heavy 		= bool(d.get("heavy",false))
+	item.hand 		= d.get("hand",hand)
 	# effect (dictionary) -> ItemEffect Resource
 	if d.has("effect") and typeof(d["effect"]) == TYPE_DICTIONARY:
-		item.effect = _effect_from_dict(d["effect"])
-	
+		item.effect = _effect_from_dict(d["effect"])	
 	# meta (freeform key/values) — keep as Dictionary[StringName, Variant]
 	if d.has("meta") and typeof(d["meta"]) == TYPE_DICTIONARY:
 		var meta: Dictionary[StringName, Variant] = {}

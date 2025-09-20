@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ue7icqjp56r"]
+
+[ext_resource type="Theme" uid="uid://dfifin65ooqo2" path="res://resources/theme.tres" id="1_gulqe"]
+[ext_resource type="PackedScene" uid="uid://brhwv674gmgm6" path="res://characters/model/kachujin.tscn" id="2_04a3b"]
+[ext_resource type="Script" uid="uid://bchj875rbfqha" path="res://scenes/ui/equipment_window.gd" id="2_qvwi5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_04a3b"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Environment" id="Environment_qvwi5"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 2.74
+reflected_light_source = 1
+
+[node name="equipment_window" type="Window"]
+auto_translate_mode = 1
+title = "Equipment"
+position = Vector2i(10, 36)
+size = Vector2i(300, 300)
+theme = ExtResource("1_gulqe")
+script = ExtResource("2_qvwi5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_right = 181.5
+offset_bottom = 300.0
+grow_horizontal = 2
+texture = SubResource("ViewportTexture_04a3b")
+
+[node name="Weapon_Button" type="Button" parent="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+offset_left = 26.0
+offset_top = 106.0
+offset_right = 66.0
+offset_bottom = 146.0
+
+[node name="Shield_Button" type="Button" parent="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+offset_left = 27.0
+offset_top = 154.0
+offset_right = 67.0
+offset_bottom = 194.0
+
+[node name="Helmet_Button" type="Button" parent="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 26.0
+offset_top = 54.0
+offset_right = 66.0
+offset_bottom = 94.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 53.0
+offset_right = 295.0
+offset_bottom = 197.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(300, 300)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = SubResource("Environment_qvwi5")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.976432, 0.215826, 0, -0.215826, 0.976432, 0, 1.20946, 1.43744)
+fov = 101.889
+
+[node name="Model" type="Node3D" parent="SubViewport"]
+
+[node name="kachujin" parent="SubViewport/Model" instance=ExtResource("2_04a3b")]
+
+[node name="Shield_Button" type="Button" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(40, 32)
+offset_left = 22.0
+offset_top = 243.0
+offset_right = 97.0
+offset_bottom = 278.0
+text = "Teke Off"

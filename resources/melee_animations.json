@@ -1,0 +1,27 @@
+{
+  "attack": [
+	"MeleeLib\/Slash1",
+	"MeleeLib\/Slash2",
+	"MeleeLib\/Slash3",
+	"MeleeLib\/SlashL1",
+	"MeleeLib\/SlashRelease",
+	"MeleeLib\/SlashUppercut"
+  ],
+  "idle": ["MeleeLib\/LightIdle"],
+  "jump": ["MeleeLib\/LightFalling"],
+  "walk": ["arrowLib\/walk"],
+  "attack_weapon": [
+	"MeleeLib\/Slash1",
+	"MeleeLib\/Slash2",
+	"MeleeLib\/Slash3",
+	"MeleeLib\/SlashL1",
+	"MeleeLib\/SlashRelease",
+	"MeleeLib\/SlashUppercut"
+  ],
+  "idle_weapon": ["MeleeLib\/LightIdle"],
+  "jump_weapon": ["MeleeLib\/LightFalling"],
+  "death": ["MeleeLib\/Die1"],
+  "run": ["arrowLib\/run"],
+  "sit" : ["arrowLib\/dance"],
+  "hurt" : ["MeleeLib\/Hurt1","MeleeLib\/Hurt2"]
+}

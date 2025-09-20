@@ -6,7 +6,7 @@ class_name MonsterData
 # ===== AI / Behavior =====
 @export var ai_type: StringName = &"melee"   # melee / ranged / boss ...
 @export var detect_range: float = 8.0
-@export var stop_distance: float = 1.6
+@export var stop_distance: float = 1.2
 @export var aggression: float = 1.0		  # ความดุ (ส่งผลกับความถี่โจมตี/ไล่)
 
 # ===== Rewards =====
@@ -19,6 +19,9 @@ class_name MonsterData
 # โครง: [{ "item": Resource, "chance": 0.25, "min": 1, "max": 1 }, ...]
 @export var loot_table: Array[LootItem] = []
 
+func _ready():
+	faction="monster"
+	 
 # ของสำหรับ drop
 func add_loot(item: ItemData, chance=0.25, min: int = 1, max: int=1):
 	var x = LootItem.new()
@@ -33,5 +36,5 @@ func roll_loot(_actor:Node3D):
 	# TODO สร้าง object ของ dropitem ในตำแหน่งที่ monster ตาย	var drops: Array = []
 	print("drop ")
 	for e in loot_table:
-		if randf() <= e.chance:
-			e.new_instace(_actor)
+		#if randf() <= e.chance:
+		e.new_instace(_actor)

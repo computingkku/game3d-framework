@@ -61,6 +61,8 @@ var _props : Array[String] = []
 
 func set_model(m: CharacterModel):
 	model = m
+	if display_name=="Unnamed" && m.name !="":
+		display_name = m.name
 	update_equip_items()
 	
 func get_stat(key:String,defval=0) -> float:

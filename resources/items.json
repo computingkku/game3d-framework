@@ -2,29 +2,123 @@
   {
 	"id": "gold",
 	"name": "เหรียญทอง",
-	"icon": "res://assets/icons/coin.png",
-	"item_type": "CONSUMABLE",
+	"item_type": "RESOURCE",
 	"effect": { "states_add": { "gold": 1 } }
   },
   {
-	"id": "hp",
+	"id": "hp_potion",
 	"name": "ยาพลังชีวิต",
 	"icon": "res://assets/icons/potion_hp_s.png",
 	"item_type": "CONSUMABLE",
 	"effect": { "states_add": { "hp": 50 } }
   },
  {
-	"id": "mp",
+	"id": "mp_potion",
 	"name": "ยาพลังเวท",
-	"icon": "res://assets/icons/potion_mp_s.png",
 	"item_type": "CONSUMABLE",
 	"effect": { "states_add": { "mp": 50 } }
   },
  {
-	"id": "exp",
+	"id": "exp_potion",
 	"name": "ยาเพิ่มประสบการณ์",
-	"icon": "res://assets/icons/potion_exp_s.png",
 	"item_type": "CONSUMABLE",
 	"effect": { "states_add": { "exp": 50 } }
   },
+ {
+	"id": "st_potion",
+	"name": "ยาชูกำลัง",
+	"item_type": "CONSUMABLE",
+	"effect": { "states_add": { "stamina": 50 } }
+  },
+  {
+	"id": "spear",
+	"name": "หอก",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 5 } },
+	"meta": { "price": 25, "rarity": "common" },
+	"heavy":true,
+	"icon_zoom" : 1.0
+  },
+  {
+	"id": "knife",
+	"name": "มีดแหลม",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 3 } },
+	"meta": { "price": 25, "rarity": "common" },
+	"icon_zoom" : 3.0
+  },
+  {
+	"id": "shield_celtic_golden",
+	"name": "โล่ทองคำ",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "defense": 3 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "skeleton_shield_a",
+	"name": "โล่หัวกระโหลก",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "defense": 3 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "skeleton_shield_b",
+	"name": "โล่กระดูกกลม",
+	"item_type": "SHIELD",
+	"effect": { "states_add": { "defense": 3 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "sword",
+	"name": "ดาบ",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 6 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "skeleton_axe",
+	"name": "ขวานกระดูก",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 6 } },
+	"meta": { "price": 25, "rarity": "common" },
+	"heavy":true
+  },
+  {
+	"id": "skeleton_blade",
+	"name": "มีดกระดูก",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 6 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+  {
+	"id": "hammer",
+	"name": "ค้อนหนาม",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 6 } },
+	"meta": { "price": 25, "rarity": "common" },
+	"heavy":true
+  },
+  {
+	"id": "dagger",
+	"name": "มีดนินจา",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 6 } },
+	"meta": { "price": 25, "rarity": "common" }
+  }
+,
+  {
+	"id": "bow",
+	"name": "ธนู",
+	"item_type": "WEAPON",
+	"hand" : "left",
+	"effect": { "states_add": { "attack": 15 } },
+	"meta": { "price": 25, "rarity": "common" }
+  },
+{
+	"id": "pistol",
+	"name": "ปืนสั้น",
+	"item_type": "WEAPON",
+	"effect": { "states_add": { "attack": 15 } },
+	"meta": { "price": 100, "rarity": "common" }
+  }
 ]

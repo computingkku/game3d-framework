@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://hril48mddfx4"]
+
+[ext_resource type="Texture2D" uid="uid://bypwoa0dsnyd0" path="res://assets/images/360photoconverter.jpg" id="1_iiuq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1xxi"]
+cull_mode = 1
+albedo_texture = ExtResource("1_iiuq3")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u1xxi"]
+material = SubResource("StandardMaterial3D_u1xxi")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 8.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389667, 3.96962, 0.161442)
+mesh = SubResource("CylinderMesh_u1xxi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.04053, 0)

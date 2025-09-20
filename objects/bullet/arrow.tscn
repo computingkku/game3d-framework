@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci448jran7dtw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p4hx8"]
+top_radius = 0.015
+bottom_radius = 0.015
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op6is"]
+emission_enabled = true
+emission = Color(1, 0.541176, 0, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fj2kh"]
+material = SubResource("StandardMaterial3D_op6is")
+top_radius = 0.0
+bottom_radius = 0.04
+height = 0.2
+
+[node name="Arrow" type="Node3D"]
+
+[node name="Node" type="Node3D" parent="."]
+transform = Transform3D(0.999651, 0.00304296, -0.0262284, -0.00423775, 0.99895, -0.045619, 0.0260621, 0.0457142, 0.998614, 0, 0.205566, 0)
+
+[node name="stick" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254327, 0)
+mesh = SubResource("CylinderMesh_p4hx8")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_op6is")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83606, 0)
+mesh = SubResource("CylinderMesh_fj2kh")
+skeleton = NodePath("../..")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://2p0dysb2pvlj"]
+
+[ext_resource type="Script" uid="uid://dw4rjc83qa0i0" path="res://objects/bullet/sword_slash.gd" id="1_rgcng"]
+[ext_resource type="Texture2D" uid="uid://dxvd33rw2pfgq" path="res://assets/images/sword_slash.png" id="1_vsdau"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsdau"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_vsdau")
+emission_enabled = true
+emission = Color(0.866667, 0.811765, 0, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_vsdau"]
+material = SubResource("StandardMaterial3D_vsdau")
+size = Vector2(1.5, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hi0vg"]
+size = Vector3(1.05165, 0.339844, 0.159424)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rgcng"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = 1.07288e-05
+angle_max = 180.0
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(0, 3, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -5, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 0.999998
+damping_max = 2.0
+scale_min = 0.2
+scale_over_velocity_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_syj4i"]
+albedo_color = Color(0.623529, 0.12549, 0.12549, 1)
+emission_enabled = true
+emission = Color(0.851712, 0.11642, 2.88785e-07, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_hi0vg"]
+material = SubResource("StandardMaterial3D_syj4i")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="sword_slash" type="Node3D"]
+script = ExtResource("1_rgcng")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_vsdau")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00380707, 0.0280762, 0.00012207)
+shape = SubResource("BoxShape3D_hi0vg")
+
+[node name="damage_effect" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0474854, -0.0172426, 0)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rgcng")
+draw_pass_1 = SubResource("BoxMesh_hi0vg")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

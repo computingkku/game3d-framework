@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgs1imp15r0yn" path="res://objects/platforms/base_01.tscn" id="1_7j2xj"]
 [ext_resource type="Script" uid="uid://bbul7fulvfwf1" path="res://test/test_actor_3d.gd" id="1_bouax"]
-[ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/players/Player3D.tscn" id="3_bouax"]
+[ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/Player3D.tscn" id="3_bouax"]
 [ext_resource type="PackedScene" uid="uid://dlnfuiwdng0cm" path="res://characters/monsters/Skeleton1.tscn" id="4_6q1l6"]
 [ext_resource type="Resource" uid="uid://csve6l7kppj34" path="res://resources/monster/monster_axe.tres" id="5_lfqtd"]
 

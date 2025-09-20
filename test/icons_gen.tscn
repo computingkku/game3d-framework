@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://ds0achthiixiy"]
+
+[ext_resource type="Script" uid="uid://cnds0cvpx6b72" path="res://test/icons_gen.gd" id="1_mjmlp"]
+[ext_resource type="PackedScene" uid="uid://cj37q0tfm1olc" path="res://objects/items/spear.tscn" id="2_2xocj"]
+[ext_resource type="PackedScene" uid="uid://d2b6scqcucyvi" path="res://objects/items/shield_celtic_golden.tscn" id="2_mjmlp"]
+[ext_resource type="PackedScene" uid="uid://dwhapnria806h" path="res://objects/items/knife.tscn" id="4_fdxte"]
+[ext_resource type="PackedScene" uid="uid://dy41smhj7ms0m" path="res://objects/items/sword.tscn" id="5_lt4em"]
+[ext_resource type="PackedScene" uid="uid://dnjqfdc5o1pfi" path="res://objects/items/exp_potion.tscn" id="8_4lb15"]
+[ext_resource type="PackedScene" uid="uid://c35soj1gidfwf" path="res://objects/items/bow.tscn" id="9_5s73c"]
+[ext_resource type="PackedScene" uid="uid://dr7h1c1ctloik" path="res://objects/items/gold.tscn" id="10_c5858"]
+[ext_resource type="PackedScene" uid="uid://eo6afeqjmhvp" path="res://objects/items/hammer.tscn" id="10_gh5sf"]
+[ext_resource type="PackedScene" uid="uid://lmclgmc5bnlo" path="res://objects/items/dagger.tscn" id="11_40hfv"]
+[ext_resource type="PackedScene" uid="uid://1tf7ex1j31p6" path="res://objects/items/mp_potion.tscn" id="11_gh5sf"]
+[ext_resource type="PackedScene" uid="uid://dm4e5slt00ibb" path="res://objects/items/pistol.tscn" id="12_40hfv"]
+[ext_resource type="PackedScene" uid="uid://cjlfvyq6hup2v" path="res://objects/items/st_potion.tscn" id="13_5s73c"]
+[ext_resource type="PackedScene" uid="uid://dokq5e17kb82a" path="res://objects/items/hp_potion.tscn" id="13_o15x7"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2xocj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Environment" id="Environment_mjmlp"]
+background_mode = 1
+background_color = Color(0.08469, 0.0846899, 0.0846899, 1)
+background_energy_multiplier = 1.74
+ambient_light_source = 2
+ambient_light_color = Color(0.89059, 0.89059, 0.89059, 1)
+ambient_light_energy = 2.0
+reflected_light_source = 1
+
+[node name="IconGen" type="Node2D"]
+script = ExtResource("1_mjmlp")
+
+[node name="Preview" type="Sprite2D" parent="."]
+position = Vector2(956, 220)
+texture = SubResource("ViewportTexture_2xocj")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 39.0
+offset_top = 16.0
+offset_right = 175.0
+offset_bottom = 56.0
+text = "Generate Icons"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+offset_left = 40.0
+offset_top = 68.0
+offset_right = 812.0
+offset_bottom = 489.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(256, 256)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.00253077, 0.999997, 0, -0.999997, 0.00253077, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = SubResource("Environment_mjmlp")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-0.513601, 0.858029, 3.75057e-08, -4.02948e-15, -4.37114e-08, 1, 0.858029, 0.513601, 2.24502e-08, 0.396421, 1.23893, 0.00264132)
+fov = 76.1416
+
+[node name="spear" parent="SubViewport" instance=ExtResource("2_2xocj")]
+transform = Transform3D(-1.31005e-07, 1, 8.23806e-09, -0.0942325, 1.37301e-09, -2.99852, -2.99852, -4.3733e-08, 0.0942325, -0.0995179, 0.0571628, 0.0119669)
+visible = false
+
+[node name="shield_celtic_golden" parent="SubViewport" instance=ExtResource("2_mjmlp")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0.305915, 0, 0.0555796)
+visible = false
+
+[node name="knife" parent="SubViewport" instance=ExtResource("4_fdxte")]
+transform = Transform3D(-1.74846e-07, 3, 0, 0.611943, 2.00617e-08, 3.95291, 3.95291, 1.29591e-07, -0.611943, 0.106884, 0, 0)
+visible = false
+
+[node name="sword" parent="SubViewport" instance=ExtResource("5_lt4em")]
+transform = Transform3D(1, 0, 0, 0, -0.0802636, -1.99839, 0, 1.99839, -0.0802636, 0, 0, -0.307826)
+visible = false
+
+[node name="hammer" parent="SubViewport" instance=ExtResource("10_gh5sf")]
+transform = Transform3D(0.898638, 1.34006, 0, -1.78099, 0.671808, 0.160398, 0.143295, -0.0540524, 1.99356, -0.197505, 0.0597076, -0.0128259)
+visible = false
+
+[node name="dagger" parent="SubViewport" instance=ExtResource("11_40hfv")]
+transform = Transform3D(2, 0, 0, 0, -0.160527, 3.99678, 0, -3.99678, -0.160527, 0, 0, 0.18384)
+visible = false
+
+[node name="exp_potion" parent="SubViewport" instance=ExtResource("8_4lb15")]
+transform = Transform3D(1.04357, 2.72995, -0.677018, 0.0187322, 0.715355, 2.9134, 2.81258, -1.01768, 0.231795, 0.3, 0, 0)
+visible = false
+
+[node name="bow" parent="SubViewport" instance=ExtResource("9_5s73c")]
+transform = Transform3D(0.977783, -0.205974, 0.0389192, 0, 0.185667, 0.982613, -0.209619, -0.960782, 0.181542, 0.4, 0, -0.2)
+visible = false
+
+[node name="gold" parent="SubViewport" instance=ExtResource("10_c5858")]
+transform = Transform3D(2, 0, 0, 0, -0.677476, -1.88176, 0, 1.88176, -0.677476, 0.27, -0.14, 0.15)
+visible = false
+
+[node name="mp_potion" parent="SubViewport" instance=ExtResource("11_gh5sf")]
+transform = Transform3D(-0.262117, 2.78534, 1.08313, 0.364611, 1.10897, -2.76356, -2.9662, -0.109818, -0.435415, 0.405, 0, 0)
+visible = false
+
+[node name="pistol" parent="SubViewport" instance=ExtResource("12_40hfv")]
+transform = Transform3D(3, 0, 0, 0, -0.396769, -2.97365, 0, 2.97365, -0.396769, 0.175, 0.455, -0.475)
+visible = false
+
+[node name="st_potion" parent="SubViewport" instance=ExtResource("13_5s73c")]
+transform = Transform3D(-0.317237, 2.42102, 1.743, -2.4666, 0.772987, -1.52262, -1.67786, -1.5941, 1.90882, 0.575, 0, 0)
+visible = false
+
+[node name="hp_potion" parent="SubViewport" instance=ExtResource("13_o15x7")]
+transform = Transform3D(0.587838, 2.94184, 0, -2.87541, 0.574563, -0.633974, -0.621685, 0.124225, 2.93225, 0.51, 0, 0)
+visible = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 887.076
+offset_top = 31.8075
+offset_right = 927.076
+offset_bottom = 63.8075
+text = "Preview"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

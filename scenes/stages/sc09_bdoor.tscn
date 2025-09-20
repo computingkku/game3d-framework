@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://sq1b6u514tox"]
+
+[ext_resource type="PackedScene" uid="uid://i4jn1yuk0jvs" path="res://assets/glb/building/sc09_cp.tscn" id="2_fi72l"]
+[ext_resource type="Script" uid="uid://d3tkrnb4wv7i4" path="res://scripts/inventory/LootItem.gd" id="2_ho72d"]
+[ext_resource type="PackedScene" uid="uid://b384c1nx40qd4" path="res://characters/Monster3D.tscn" id="2_r8s47"]
+[ext_resource type="Script" uid="uid://cswu2nd40qwxd" path="res://scripts/actors/MonsterData.gd" id="3_jn1hy"]
+[ext_resource type="PackedScene" uid="uid://dco3hgerqqdtx" path="res://characters/model/zombie_woman.tscn" id="3_pl31d"]
+[ext_resource type="PackedScene" uid="uid://drtvndh4d802f" path="res://characters/model/zombie_yakuza.tscn" id="4_ho72d"]
+
+[sub_resource type="Resource" id="Resource_eubar"]
+script = ExtResource("3_jn1hy")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.6
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("2_ho72d")]([])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="Resource" id="Resource_ho72d"]
+script = ExtResource("3_jn1hy")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.6
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("2_ho72d")]([])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfnj4"]
+size = Vector3(17.45, 1, 42.5557)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi72l"]
+size = Vector3(19.499, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8s47"]
+size = Vector3(1, 10, 40.6465)
+
+[node name="SC09" type="Node3D"]
+
+[node name="Monsters" type="Node3D" parent="."]
+
+[node name="Monster3D" parent="Monsters" instance=ExtResource("2_r8s47")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.02245, 1.16194, 0)
+data = SubResource("Resource_eubar")
+model_scene = ExtResource("3_pl31d")
+
+[node name="Monster3D2" parent="Monsters" instance=ExtResource("2_r8s47")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.45551, 1.16194, 0)
+data = SubResource("Resource_ho72d")
+model_scene = ExtResource("4_ho72d")
+
+[node name="sc09_cp" parent="." instance=ExtResource("2_fi72l")]
+transform = Transform3D(2.49994, 0, 0.0176924, 0, 2, 0, -0.017366, 0, 2.54694, 0, 0.0102335, 14.9289)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227661, -0.528669, 16.2778)
+shape = SubResource("BoxShape3D_rfnj4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.680267, 4.52042, -4.45333)
+shape = SubResource("BoxShape3D_fi72l")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.680267, 4.52042, 37.1925)
+shape = SubResource("BoxShape3D_fi72l")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.680267, 4.52042, 37.1925)
+shape = SubResource("BoxShape3D_fi72l")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88101, 4.52042, 15.2883)
+shape = SubResource("BoxShape3D_r8s47")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3821, 4.52042, 15.2883)
+shape = SubResource("BoxShape3D_r8s47")

@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=3 uid="uid://bi2nihnphq2ne"]
+
+[ext_resource type="Script" uid="uid://chxpqvira46r2" path="res://objects/DropItem.gd" id="1_td5ba"]
+[ext_resource type="Texture2D" uid="uid://b5umrnx3cm8nk" path="res://assets/images/star2.png" id="2_m6p3b"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwvch"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(1, -0.5, 0)
+spread = 180.0
+initial_velocity_min = 0.4
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.2
+color = Color(0.631373, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idl02"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 1
+albedo_color = Color(1, 0.878431, 0, 1)
+albedo_texture = ExtResource("2_m6p3b")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = -3.906
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wlf4"]
+material = SubResource("StandardMaterial3D_idl02")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6p3b"]
+albedo_color = Color(1, 0.247059, 0.0901961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lhlpo"]
+material = SubResource("StandardMaterial3D_m6p3b")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_m6p3b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.410856, 0.001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.02284, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lhlpo"]
+resource_name = "start"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.02284, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.410856, 0.001), Vector3(0, 1.6477, 0.001)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_td5ba"]
+_data = {
+&"RESET": SubResource("Animation_m6p3b"),
+&"start": SubResource("Animation_lhlpo")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6p3b"]
+size = Vector3(0.341919, 1.97534, 0.701294)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhlpo"]
+size = Vector3(0.655151, 2.00891, 0.904724)
+
+[node name="DropItem" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_td5ba")
+
+[node name="Item" type="Node3D" parent="."]
+transform = Transform3D(1, 4.01776e-06, -1.95094e-06, 0, -0.436805, -0.899557, -4.46638e-06, 0.899557, -0.436805, 0, 0.410856, 0.001)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Item"]
+transform = Transform3D(-0.927184, 0, -0.374605, 0, 1, 0, 0.374605, 0, -0.927184, 0, -0.0630372, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_nwvch")
+draw_pass_1 = SubResource("QuadMesh_8wlf4")
+
+[node name="Mesh" type="MeshInstance3D" parent="Item"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_lhlpo")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_td5ba")
+}
+autoplay = "start"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00921631, 1.01072, 0.0137563)
+shape = SubResource("BoxShape3D_m6p3b")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, 1.00288, 0.00454712)
+shape = SubResource("BoxShape3D_lhlpo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

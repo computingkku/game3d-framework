@@ -6,6 +6,11 @@ var player : CharacterBody3D
 var gravity = 10
 var ui_visible = false
 var ui_status_canvas = null
+var items : Array[ItemData]
+var gamescene : Node3D
+
+func _ready() -> void:
+	items = ItemHelper.load_items_array("res://resources/items.json")
 
 func set_player(p:CharacterBody3D):
 	player = p
@@ -15,6 +20,10 @@ func set_player(p:CharacterBody3D):
 	emit_state_changed()
 	
 func get_item(id:String)->ItemData:
+	for x in items:
+		if x.id == id:
+			return x
+			
 	if player and player.model:
 		return ItemHelper.find(player.model.items,id)
 	return null	
@@ -32,3 +41,11 @@ func give_reward(exp,gold):
 func notify(text:String):
 	if ui_status_canvas:
 		ui_status_canvas.notify(text)
+
+func loadAnimationLib(ani_player:AnimationPlayer):
+	if !ani_player.has_animation_library("MeleeLib"):
+		ani_player.add_animation_library("MeleeLib",preload("res://resources/MeleeLib.res"))
+	if !ani_player.has_animation_library("ShooterLib"):
+		ani_player.add_animation_library("ShooterLib",preload("res://resources/ShooterLib.res"))
+	if !ani_player.has_animation_library("arrowLib"):
+		ani_player.add_animation_library("arrowLib",preload("res://resources/ArrowLib.res"))

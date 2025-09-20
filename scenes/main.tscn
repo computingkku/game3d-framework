@@ -1,43 +1,82 @@
 [gd_scene load_steps=19 format=3 uid="uid://dywx8iqsoxnyj"]
 
 [ext_resource type="Script" uid="uid://cas0lngmvrcch" path="res://scenes/main.gd" id="1_jscy8"]
-[ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://resources/night_sky.tres" id="2_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://cddijcwmll5ym" path="res://scenes/platforms.tscn" id="4_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://cl6ax05vaxicj" path="res://objects/items/Potion.tscn" id="12_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://2ejf8e0jqjmu" path="res://objects/items/Coin.tscn" id="18_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://b384c1nx40qd4" path="res://characters/Monster3D.tscn" id="7_eb6dy"]
+[ext_resource type="Script" uid="uid://d3tkrnb4wv7i4" path="res://scripts/inventory/LootItem.gd" id="8_trceg"]
+[ext_resource type="Script" uid="uid://cswu2nd40qwxd" path="res://scripts/actors/MonsterData.gd" id="9_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://dco3hgerqqdtx" path="res://characters/model/zombie_woman.tscn" id="10_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://drtvndh4d802f" path="res://characters/model/zombie_yakuza.tscn" id="11_trceg"]
+[ext_resource type="PackedScene" uid="uid://b25574f3ghph0" path="res://characters/model/EggBoy.tscn" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dy4b3ftfid3k5" path="res://scenes/ui/ui_game_over.tscn" id="20_og1vs"]
 [ext_resource type="PackedScene" uid="uid://cicyhltpma3q5" path="res://scenes/ui/ui_inventory.tscn" id="20_yc10j"]
-[ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/players/Player3D.tscn" id="21_yc10j"]
-[ext_resource type="PackedScene" uid="uid://jo44di2g7gba" path="res://objects/items/Weapon.tscn" id="22_y6deb"]
-[ext_resource type="PackedScene" uid="uid://bi2nihnphq2ne" path="res://objects/items/DropItem.tscn" id="23_og1vs"]
+[ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/Player3D.tscn" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://bi2nihnphq2ne" path="res://objects/DropItem.tscn" id="23_og1vs"]
 [ext_resource type="PackedScene" uid="uid://d4eiv6m7x80ps" path="res://scenes/ui/ui_status.tscn" id="23_pm3ni"]
-[ext_resource type="PackedScene" uid="uid://c7i5ag0kfhg07" path="res://objects/items/Shield.tscn" id="25_vxglm"]
-[ext_resource type="Resource" uid="uid://csve6l7kppj34" path="res://resources/monster/monster_axe.tres" id="27_yq6so"]
-[ext_resource type="PackedScene" uid="uid://dlnfuiwdng0cm" path="res://characters/monsters/Skeleton1.tscn" id="28_2f3dj"]
-[ext_resource type="Shader" uid="uid://cm3li7ukutb6q" path="res://scripts/shaders/toon.gdshader" id="33_5q0nq"]
-
-[sub_resource type="Sky" id="Sky_j8jky"]
-sky_material = ExtResource("2_dgi5k")
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
-background_mode = 2
-background_color = Color(0.699653, 0.699653, 0.699653, 1)
-sky = SubResource("Sky_j8jky")
+background_color = Color(0.385493, 0.385493, 0.385492, 1)
+background_energy_multiplier = 0.6
 ambient_light_source = 2
 ambient_light_color = Color(0.698021, 0.616415, 0.654218, 1)
 reflected_light_source = 1
 glow_intensity = 1.0
 glow_bloom = 0.3
-fog_light_color = Color(0.357311, 0.388105, 0.436507, 1)
+fog_enabled = true
+fog_light_color = Color(0.396078, 0.223529, 0.0470588, 1)
+fog_sun_scatter = 1.0
 fog_sky_affect = 0.641
 volumetric_fog_emission = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5q0nq"]
-shader = ExtResource("33_5q0nq")
-shader_parameter/QUANT_LEVELS = 8
-shader_parameter/EDGE_STRENGTH = 1.2
-shader_parameter/EDGE_THICKNESS = 0.5
-shader_parameter/EDGE_COLOR = Vector3(0, 0, 0)
+[sub_resource type="Resource" id="Resource_jbj1t"]
+script = ExtResource("8_trceg")
+item_id = "hp_potion"
+chance = 0.25
+min = 2
+max = 10
+metadata/_custom_type_script = "uid://d3tkrnb4wv7i4"
+
+[sub_resource type="Resource" id="Resource_muem4"]
+script = ExtResource("9_a8y0u")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.2
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("8_trceg")]([SubResource("Resource_jbj1t")])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6dy"]
+transparency = 1
+albedo_color = Color(1, 0.713726, 0.192157, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.247059, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_trceg"]
+material = SubResource("StandardMaterial3D_eb6dy")
+radius = 20.0
+height = 40.0
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jscy8")
@@ -47,159 +86,73 @@ environment = SubResource("Environment_jyhfs")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.6092, 0)
+light_color = Color(0.741176, 0.498039, 0.219608, 1)
 light_bake_mode = 0
+shadow_enabled = true
 shadow_opacity = 0.8
 directional_shadow_mode = 0
 directional_shadow_blend_splits = true
-
-[node name="ShaderLayer" type="CanvasLayer" parent="."]
-layer = 0
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="ShaderLayer"]
-visible = false
-material = SubResource("ShaderMaterial_5q0nq")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="platforms" parent="." instance=ExtResource("4_a8y0u")]
 
 [node name="Inventory" parent="." instance=ExtResource("20_yc10j")]
 
 [node name="UI_Status" parent="." node_paths=PackedStringArray("player") instance=ExtResource("23_pm3ni")]
-player = NodePath("../ActorsLayer/Player")
+player = NodePath("../Player")
 
 [node name="UI_GameOver" parent="." instance=ExtResource("20_og1vs")]
 visible = false
 
 [node name="Items" type="Node3D" parent="."]
 
-[node name="Weapon" parent="Items" instance=ExtResource("22_y6deb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.684, 0, 10.238)
-
-[node name="Weapon2" parent="Items" instance=ExtResource("22_y6deb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3983, 0.28363, 7.30681)
-item_id = "knight_sword2"
-
-[node name="Weapon3" parent="Items" instance=ExtResource("22_y6deb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3983, 0.28363, 9.50805)
-item_id = "knight_sword3"
-
-[node name="DropItem" parent="Items" instance=ExtResource("23_og1vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2803, 0.283608, 6.91209)
+[node name="DropItem1" parent="Items" instance=ExtResource("23_og1vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2199, -0.864431, 6.91209)
+item_id = "gold"
 
 [node name="DropItem2" parent="Items" instance=ExtResource("23_og1vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.913, 0.283608, 6.03515)
-data = null
-item_id = "knight_helmet"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7009, -0.704705, 12.753)
+item_id = "hp_potion"
 
 [node name="DropItem3" parent="Items" instance=ExtResource("23_og1vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6412, 0.283608, 6.03515)
-data = null
-item_id = "knight_cape"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.531, -0.945478, 10.1146)
+item_id = "mp_potion"
 
-[node name="Coin" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5835, 0.28363, 6.2014)
+[node name="Monsters" type="Node3D" parent="."]
 
-[node name="Coin2" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5835, 0.710386, 12.8117)
+[node name="Monster3D" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7453, -0.129145, 0)
+data = SubResource("Resource_muem4")
+model_scene = ExtResource("10_jkv2x")
 
-[node name="Coin3" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8154, 0.645016, 12.8117)
+[node name="Monster3D2" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8555, -0.129145, 0)
+data = SubResource("Resource_muem4")
+model_scene = ExtResource("11_trceg")
 
-[node name="Coin4" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3573, 0.28363, -2.45055)
+[node name="Monster3D3" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.4112, -0.129145, 1.61284)
+data = SubResource("Resource_muem4")
+model_scene = ExtResource("10_jkv2x")
 
-[node name="Coin5" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3573, 0.28363, 4.15975)
+[node name="Monster3D4" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5214, -0.129145, 1.61284)
+data = SubResource("Resource_muem4")
+model_scene = ExtResource("11_trceg")
 
-[node name="Coin6" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5892, 0.28363, 4.15975)
+[node name="Player" parent="." instance=ExtResource("21_yc10j")]
+transform = Transform3D(-0.935358, 0, -0.353703, 0, 1, 0, 0.353703, 0, -0.935358, 37.0472, -1.02669, 15.9426)
+model_scene = ExtResource("14_jbj1t")
 
-[node name="Coin7" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.890186, 0.28363, 8.08668)
+[node name="Sun2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 198.928, 0)
+mesh = SubResource("SphereMesh_trceg")
 
-[node name="Coin8" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.890186, 0.28363, 14.697)
-
-[node name="Coin9" parent="Items" instance=ExtResource("18_pm3ni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34171, 0.868358, 14.697)
-
-[node name="Shield1" parent="Items" instance=ExtResource("25_vxglm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.472, 0.64638, 4.6877)
-
-[node name="Shield2" parent="Items" instance=ExtResource("25_vxglm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3157, 0.798985, 4.6877)
-item_id = "knight_badge_shield"
-
-[node name="Potion" parent="Items" instance=ExtResource("12_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.281, -0.809935, 11.992)
-count = 10
-
-[node name="Potion2" parent="Items" instance=ExtResource("12_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.502, -0.473201, 11.992)
-count = 10
-item_id = "mp"
-
-[node name="ActorsLayer" type="CanvasLayer" parent="."]
-
-[node name="Player" parent="ActorsLayer" instance=ExtResource("21_yc10j")]
-transform = Transform3D(-0.935358, 0, -0.353703, 0, 1, 0, 0.353703, 0, -0.935358, 37.0472, -1.22023, 15.9426)
-
-[node name="Monsters" type="Node" parent="ActorsLayer"]
-
-[node name="Monster3D2" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02601, 0.620428, 5.72938)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D3" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8905, 0.620428, 5.72938)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D4" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8905, 0.620428, 8.63824)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D5" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.977, 0.620428, 8.63824)
-data = ExtResource("27_yq6so")
-rebirth_time = 20
-
-[node name="Monster3D6" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02601, 0.620428, -27.5308)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D7" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3828, 2.94489, 5.72938)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D8" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1605, 3.77917, -25.4763)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D9" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1455, 2.94752, 8.63824)
-data = ExtResource("27_yq6so")
-rebirth_time = 20
-
-[node name="Monster3D10" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87142, 0.620428, -51.1281)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D11" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(0.999743, 0, 0.0226873, 0, 1, 0, -0.0226873, 0, 0.999743, -39.8255, 2.91026, -4.87518)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D12" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2631, 3.77917, -41.4806)
-data = ExtResource("27_yq6so")
-
-[node name="Monster3D13" parent="ActorsLayer/Monsters" instance=ExtResource("28_2f3dj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2481, 3.35801, -7.36609)
-data = ExtResource("27_yq6so")
-rebirth_time = 20
+[node name="OmniLight3D" type="OmniLight3D" parent="Sun2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41045, 0, 4.21594)
+light_color = Color(0.995289, 0.607914, 0.567756, 1)
+light_energy = 5.0
+light_indirect_energy = 1.702
+light_size = 0.385
+omni_range = 13.396
 
 [editable path="Inventory"]

@@ -10,6 +10,9 @@ class_name PlayerData
 @export var inventory: InventoryData
 @export var load_limit: float = 50.0
 
+func _ready():
+	faction="player" 
+
 # Override การคำนวณดาเมจเล็กน้อย ให้ใช้ total attack
 func take_damage(raw_amount: int, pierce: float = 0.0, allow_crit: bool = true) -> int:
 	# ใช้ defense ปกติ (หรือจะ override เพิ่มระบบเกราะ/ธาตุก็ได้)

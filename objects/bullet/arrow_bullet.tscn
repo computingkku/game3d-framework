@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://moiwpa0aym6v"]
+
+[ext_resource type="Script" uid="uid://drgv8o8884tb7" path="res://objects/bullet/arrow.gd" id="1_hwtmb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwtmb"]
+emission_enabled = true
+emission = Color(0.901961, 0.94902, 0, 1)
+emission_energy_multiplier = 2.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_dftsg"]
+material = SubResource("StandardMaterial3D_hwtmb")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8uliu"]
+radius = 0.1
+
+[node name="arrow_bullet" type="Node3D"]
+script = ExtResource("1_hwtmb")
+
+[node name="Node" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(1, 1.16415e-10, 0, 0, 1, 0, 0, -3.72529e-09, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_dftsg")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="Node"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Area3D"]
+transform = Transform3D(1, 1.16415e-10, 0, 0, 1, 0, 0, -3.72529e-09, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_8uliu")
+
+[connection signal="body_entered" from="Node/Area3D" to="." method="_on_area_3d_body_entered"]

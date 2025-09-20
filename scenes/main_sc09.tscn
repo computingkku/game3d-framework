@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvje120ifiwbp"]
+
+[ext_resource type="Script" uid="uid://c6wusig781pnj" path="res://scenes/main_sc09.gd" id="1_l4fgv"]
+[ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://resources/night_sky.tres" id="2_d6dej"]
+[ext_resource type="PackedScene" uid="uid://cicyhltpma3q5" path="res://scenes/ui/ui_inventory.tscn" id="5_j85oi"]
+[ext_resource type="PackedScene" uid="uid://d4eiv6m7x80ps" path="res://scenes/ui/ui_status.tscn" id="6_chp3e"]
+[ext_resource type="PackedScene" uid="uid://dy4b3ftfid3k5" path="res://scenes/ui/ui_game_over.tscn" id="7_0se0w"]
+[ext_resource type="PackedScene" uid="uid://sq1b6u514tox" path="res://scenes/stages/sc09_bdoor.tscn" id="7_yfa2g"]
+[ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/Player3D.tscn" id="8_yc73x"]
+[ext_resource type="Script" uid="uid://bb71vjxt7jt1w" path="res://scripts/actors/PlayerData.gd" id="9_epv8g"]
+[ext_resource type="PackedScene" uid="uid://b25574f3ghph0" path="res://characters/model/EggBoy.tscn" id="10_l4fgv"]
+
+[sub_resource type="Sky" id="Sky_j8jky"]
+sky_material = ExtResource("2_d6dej")
+
+[sub_resource type="Environment" id="Environment_jyhfs"]
+background_mode = 2
+background_color = Color(0.699653, 0.699653, 0.699653, 1)
+sky = SubResource("Sky_j8jky")
+ambient_light_source = 2
+ambient_light_color = Color(0.698021, 0.616415, 0.654218, 1)
+reflected_light_source = 1
+glow_intensity = 1.0
+glow_bloom = 0.3
+fog_light_color = Color(0.357311, 0.388105, 0.436507, 1)
+fog_sky_affect = 0.641
+volumetric_fog_emission = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_l4fgv"]
+script = ExtResource("9_epv8g")
+level = 1
+exp = 0
+exp_to_next = 100
+stat_points = 0
+load_limit = 50.0
+display_name = "Kachujin"
+faction = &"player"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 2.0
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://bb71vjxt7jt1w"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpude"]
+albedo_color = Color(0.7, 0.7, 0.7, 1)
+metallic = 0.1
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.884824, 0.513098, 1)
+emission_energy_multiplier = 3.71
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_l4fgv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jyhfs")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.6092, 0)
+light_bake_mode = 0
+shadow_opacity = 0.8
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
+
+[node name="Inventory" parent="." instance=ExtResource("5_j85oi")]
+
+[node name="UI_Status" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_chp3e")]
+player = NodePath("../Player")
+
+[node name="UI_GameOver" parent="." instance=ExtResource("7_0se0w")]
+visible = false
+
+[node name="sc09_stage" parent="." instance=ExtResource("7_yfa2g")]
+
+[node name="Player" parent="." instance=ExtResource("8_yc73x")]
+transform = Transform3D(1.99984, 0, 0.0251312, 0, 2, 0, -0.0251312, 0, 1.99984, -0.331179, 2.07174, 28.0573)
+data = SubResource("Resource_l4fgv")
+model_scene = ExtResource("10_l4fgv")
+
+[node name="Collision" parent="Player" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02073, 0)
+
+[node name="Sphere" parent="Player/AttackArea" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mpude")
+
+[editable path="Inventory"]
+[editable path="Player"]

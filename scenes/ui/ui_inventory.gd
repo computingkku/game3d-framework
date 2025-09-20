@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var weapons_grid: GridContainer = $Canvas/InventoryPanel/Scroll/VBox/WeaponsGrid
-@onready var shields_grid: GridContainer = $Canvas/InventoryPanel/Scroll/VBox/ShieldsGrid
-@onready var props_grid: GridContainer = $Canvas/InventoryPanel/Scroll/VBox/PropsGrid
-@onready var other_grid: GridContainer = $Canvas/InventoryPanel/Scroll/VBox/OtherGrid
+@onready var weapons_grid:= $Canvas/InventoryPanel/Scroll/VBox/WeaponsGrid
+@onready var shields_grid:= $Canvas/InventoryPanel/Scroll/VBox/ShieldsGrid
+@onready var props_grid:= $Canvas/InventoryPanel/Scroll/VBox/PropsGrid
+@onready var other_grid:= $Canvas/InventoryPanel/Scroll/VBox/OtherGrid
 
 var player : Player3D
 var is_built = false
@@ -74,7 +74,7 @@ func load_icon(path) -> Texture2D:
 	return ImageTexture.create_from_image(image)
 
 
-func _clear_grid(grid: GridContainer) -> void:
+func _clear_grid(grid:Container) -> void:
 	for c in grid.get_children():
 		c.queue_free()
 
