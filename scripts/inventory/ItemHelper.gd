@@ -81,18 +81,18 @@ static func _item_from_dict(d: Dictionary, owner: Node=null) -> ItemData:
 	if item.item_type == Types.ItemType.SHIELD : hand="left"
 	
 	var tscn_path = "res://objects/items/"+item.id+".tscn"
-	if FileAccess.file_exists(tscn_path):
-		item.scene = load(tscn_path)
-	
+	#if FileAccess.file_exists(tscn_path):
+	item.scene = load(tscn_path)
 	var icon_path = "res://objects/items/"+item.id+"_icon.png"
-	if FileAccess.file_exists(icon_path):
-		item.icon =  load_icon(icon_path)
-	else:	
-		# icon / mesh paths (optional, must be valid resource paths)
-		if d.has("icon"):
-			item.icon = load_icon(d["icon"])
-		if owner and d.has("node"):
-			item.node = owner.get_node(d["node"])	
+	item.icon =  load_icon(icon_path)
+	#if FileAccess.file_exists(icon_path):
+		#item.icon =  load_icon(icon_path)
+	#else:	
+		## icon / mesh paths (optional, must be valid resource paths)
+		#if d.has("icon"):
+			#item.icon = load_icon(d["icon"])
+		#if owner and d.has("node"):
+			#item.node = owner.get_node(d["node"])	
 		# stack / weight
 	item.stack_size = int(d.get("stack_size",10000))
 	item.weight 	= int(d.get("weight",1))

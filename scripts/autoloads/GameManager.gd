@@ -11,6 +11,7 @@ var gamescene : Node3D
 
 func _ready() -> void:
 	items = ItemHelper.load_items_array("res://resources/items.json")
+	print("loader")
 
 func set_player(p:CharacterBody3D):
 	player = p

@@ -1,14 +1,14 @@
 extends Actor3D
 class_name Monster3D
 
-@export var attack_interval := 2  # seconds between attacks
+@export var attack_interval := 3  # seconds between attacks
 @export var data : MonsterData
 # ---- Wander (idle roaming when no player in range) ----
 @export var wander_speed_scale := 0.6
 @export var wander_turn_speed_deg := 180.0  # degrees per second
 @export var wander_min_time := 2.0
 @export var wander_max_time := 4.0
-@export var rebirth_time := 10
+@export var rebirth_time := 30
 
 var _wander_time_left := 0.0
 var _wander_yaw_deg := 0.0

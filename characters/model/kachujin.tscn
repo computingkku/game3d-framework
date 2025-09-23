@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://5t2yg1nijpuq" path="res://assets/glb/character/kachujin.glb" id="1_w8oxw"]
 [ext_resource type="Script" uid="uid://dy003u7yw8yn0" path="res://scripts/actors/CharacterModel.gd" id="1_ymmjs"]
-[ext_resource type="AnimationLibrary" uid="uid://bl636f25x6v3d" path="res://resources/Arrowlib.res" id="3_ps4d3"]
+[ext_resource type="AnimationLibrary" uid="uid://bl636f25x6v3d" path="res://resources/ArrowLib.res" id="3_ps4d3"]
 [ext_resource type="AnimationLibrary" uid="uid://y5e7rewv8woq" path="res://resources/MeleeLib.res" id="4_tct2n"]
 
 [sub_resource type="Animation" id="Animation_caopc"]

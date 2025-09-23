@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6gocpjxnytix" path="res://assets/models/abe2.glb" id="1_okggf"]
 [ext_resource type="Animation" uid="uid://b6glwvevb3q2t" path="res://resources/animations/dance.res" id="2_0u420"]
 [ext_resource type="Script" uid="uid://dy003u7yw8yn0" path="res://scripts/actors/CharacterModel.gd" id="2_5fhse"]
-[ext_resource type="AnimationLibrary" uid="uid://bl636f25x6v3d" path="res://resources/Arrowlib.res" id="5_opi0b"]
+[ext_resource type="AnimationLibrary" uid="uid://bl636f25x6v3d" path="res://resources/ArrowLib.res" id="5_opi0b"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0hdmt"]
 _data = {

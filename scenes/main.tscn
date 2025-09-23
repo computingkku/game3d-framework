@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dywx8iqsoxnyj"]
+[gd_scene load_steps=24 format=3 uid="uid://dywx8iqsoxnyj"]
 
 [ext_resource type="Script" uid="uid://cas0lngmvrcch" path="res://scenes/main.gd" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://cddijcwmll5ym" path="res://scenes/platforms.tscn" id="4_a8y0u"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cswu2nd40qwxd" path="res://scripts/actors/MonsterData.gd" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dco3hgerqqdtx" path="res://characters/model/zombie_woman.tscn" id="10_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://drtvndh4d802f" path="res://characters/model/zombie_yakuza.tscn" id="11_trceg"]
+[ext_resource type="PackedScene" uid="uid://cuy6b270my67h" path="res://scenes/ui/loadin_screen.tscn" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://b25574f3ghph0" path="res://characters/model/EggBoy.tscn" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dy4b3ftfid3k5" path="res://scenes/ui/ui_game_over.tscn" id="20_og1vs"]
 [ext_resource type="PackedScene" uid="uid://cicyhltpma3q5" path="res://scenes/ui/ui_inventory.tscn" id="20_yc10j"]
@@ -47,6 +48,126 @@ gold_reward_min = 2
 exp_reward_max = 10
 gold_reward_max = 10
 loot_table = Array[ExtResource("8_trceg")]([SubResource("Resource_jbj1t")])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="Resource" id="Resource_a8y0u"]
+script = ExtResource("9_a8y0u")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.2
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("8_trceg")]([])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="Resource" id="Resource_jkv2x"]
+script = ExtResource("9_a8y0u")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.2
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("8_trceg")]([])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="Resource" id="Resource_dp3eg"]
+script = ExtResource("9_a8y0u")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.2
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("8_trceg")]([])
+display_name = "Unnamed"
+faction = &"enemy"
+hp = 100.0
+mp = 50.0
+stamina = 100.0
+max_hp = 100
+max_mp = 50
+max_stamina = 100
+attack = 10.0
+defense = 5.0
+speed = 1.0
+hp_regen = 0.5
+mp_regen = 0.5
+stamina_regen = 0.5
+crit_chance = 0.05
+crit_multiplier = 1.5
+equip_items = Array[String]([])
+metadata/_custom_type_script = "uid://cswu2nd40qwxd"
+
+[sub_resource type="Resource" id="Resource_0ld40"]
+script = ExtResource("9_a8y0u")
+ai_type = &"melee"
+detect_range = 8.0
+stop_distance = 1.2
+aggression = 1.0
+exp_reward_min = 2
+gold_reward_min = 2
+exp_reward_max = 10
+gold_reward_max = 10
+loot_table = Array[ExtResource("8_trceg")]([])
 display_name = "Unnamed"
 faction = &"enemy"
 hp = 100.0
@@ -117,21 +238,52 @@ item_id = "hp_potion"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.531, -0.945478, 10.1146)
 item_id = "mp_potion"
 
+[node name="DropItem4" parent="Items" instance=ExtResource("23_og1vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7469, -0.945478, 13.0431)
+item_id = "bow"
+
 [node name="Monsters" type="Node3D" parent="."]
 
 [node name="Monster3D" parent="Monsters" instance=ExtResource("7_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7453, -0.129145, 0)
 data = SubResource("Resource_muem4")
+rebirth_time = 50
+model_scene = ExtResource("10_jkv2x")
+
+[node name="Monster3D5" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6728, 2.05184, 0)
+data = SubResource("Resource_a8y0u")
+rebirth_time = 50
+model_scene = ExtResource("10_jkv2x")
+
+[node name="Monster3D6" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0.000453786, 0, -0.000453768, 0.99996, -0.00893597, -4.05501e-06, 0.00893597, 0.99996, 20.6728, 2.05184, 13.0684)
+data = SubResource("Resource_jkv2x")
+rebirth_time = 50
+model_scene = ExtResource("10_jkv2x")
+
+[node name="Monster3D7" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.644, 2.05184, 13.5659)
+data = SubResource("Resource_dp3eg")
+rebirth_time = 50
+model_scene = ExtResource("10_jkv2x")
+
+[node name="Monster3D8" parent="Monsters" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9693, 2.05184, 13.5659)
+data = SubResource("Resource_0ld40")
+rebirth_time = 50
 model_scene = ExtResource("10_jkv2x")
 
 [node name="Monster3D2" parent="Monsters" instance=ExtResource("7_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8555, -0.129145, 0)
 data = SubResource("Resource_muem4")
+rebirth_time = 60
 model_scene = ExtResource("11_trceg")
 
 [node name="Monster3D3" parent="Monsters" instance=ExtResource("7_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.4112, -0.129145, 1.61284)
 data = SubResource("Resource_muem4")
+rebirth_time = 60
 model_scene = ExtResource("10_jkv2x")
 
 [node name="Monster3D4" parent="Monsters" instance=ExtResource("7_eb6dy")]
@@ -140,7 +292,7 @@ data = SubResource("Resource_muem4")
 model_scene = ExtResource("11_trceg")
 
 [node name="Player" parent="." instance=ExtResource("21_yc10j")]
-transform = Transform3D(-0.935358, 0, -0.353703, 0, 1, 0, 0.353703, 0, -0.935358, 37.0472, -1.02669, 15.9426)
+transform = Transform3D(0.981134, 0, -0.193327, 0, 1, 0, 0.193327, 0, 0.981134, 37.0472, -1.02669, 15.9426)
 model_scene = ExtResource("14_jbj1t")
 
 [node name="Sun2" type="MeshInstance3D" parent="."]
@@ -154,5 +306,7 @@ light_energy = 5.0
 light_indirect_energy = 1.702
 light_size = 0.385
 omni_range = 13.396
+
+[node name="LoadinScreen" parent="." instance=ExtResource("14_a8y0u")]
 
 [editable path="Inventory"]

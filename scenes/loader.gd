@@ -33,9 +33,11 @@ func _process(_delta: float) -> void:
 			_requested = false
 			# Fallback to blocking load
 			var packed := load(MAIN_SCENE)
+			await get_tree().create_timer(1).timeout
 			if packed:
 				get_tree().change_scene_to_packed(packed)
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var packed := ResourceLoader.load_threaded_get(MAIN_SCENE)
+			await get_tree().create_timer(1).timeout
 			if packed:
 				get_tree().change_scene_to_packed(packed)

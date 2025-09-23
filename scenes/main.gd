@@ -12,6 +12,7 @@ func _ready() -> void:
 	gameover = false
 	player.model.equip_item("sword")
 	player.model.equip_item("skeleton_shield_a")
+	print("ready")
 	
 func _input(event: InputEvent) -> void:
 	if !gameover && event.is_action_pressed("inv"):
