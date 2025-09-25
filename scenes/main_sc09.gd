@@ -1,6 +1,6 @@
 extends Node3D
 @onready var ui_inventory: Node2D = $Inventory
-@onready var player: Player3D = $ActorsLayer/Player
+@onready var player: Player3D = $Player
 @onready var ui_game_over: CanvasLayer = $UI_GameOver
 
 var gameover = false

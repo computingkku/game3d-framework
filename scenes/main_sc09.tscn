@@ -1,21 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvje120ifiwbp"]
+[gd_scene load_steps=13 format=3 uid="uid://bvje120ifiwbp"]
 
 [ext_resource type="Script" uid="uid://c6wusig781pnj" path="res://scenes/main_sc09.gd" id="1_l4fgv"]
-[ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://resources/night_sky.tres" id="2_d6dej"]
 [ext_resource type="PackedScene" uid="uid://cicyhltpma3q5" path="res://scenes/ui/ui_inventory.tscn" id="5_j85oi"]
 [ext_resource type="PackedScene" uid="uid://d4eiv6m7x80ps" path="res://scenes/ui/ui_status.tscn" id="6_chp3e"]
 [ext_resource type="PackedScene" uid="uid://dy4b3ftfid3k5" path="res://scenes/ui/ui_game_over.tscn" id="7_0se0w"]
 [ext_resource type="PackedScene" uid="uid://sq1b6u514tox" path="res://scenes/stages/sc09_bdoor.tscn" id="7_yfa2g"]
 [ext_resource type="PackedScene" uid="uid://d0v2gvjfnu8xw" path="res://characters/Player3D.tscn" id="8_yc73x"]
+[ext_resource type="PackedScene" uid="uid://brhwv674gmgm6" path="res://characters/model/kachujin.tscn" id="8_yfa2g"]
 [ext_resource type="Script" uid="uid://bb71vjxt7jt1w" path="res://scripts/actors/PlayerData.gd" id="9_epv8g"]
-[ext_resource type="PackedScene" uid="uid://b25574f3ghph0" path="res://characters/model/EggBoy.tscn" id="10_l4fgv"]
 
 [sub_resource type="Sky" id="Sky_j8jky"]
-sky_material = ExtResource("2_d6dej")
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
-background_mode = 2
-background_color = Color(0.699653, 0.699653, 0.699653, 1)
 sky = SubResource("Sky_j8jky")
 ambient_light_source = 2
 ambient_light_color = Color(0.698021, 0.616415, 0.654218, 1)
@@ -41,7 +37,7 @@ stamina = 100.0
 max_hp = 100
 max_mp = 50
 max_stamina = 100
-attack = 10.0
+attack = 20.0
 defense = 5.0
 speed = 1.0
 hp_regen = 2.0
@@ -86,9 +82,9 @@ visible = false
 [node name="Player" parent="." instance=ExtResource("8_yc73x")]
 transform = Transform3D(1.99984, 0, 0.0251312, 0, 2, 0, -0.0251312, 0, 1.99984, -0.331179, 2.07174, 28.0573)
 data = SubResource("Resource_l4fgv")
-model_scene = ExtResource("10_l4fgv")
+model_scene = ExtResource("8_yfa2g")
 
-[node name="Collision" parent="Player" index="2"]
+[node name="Collision" parent="Player" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02073, 0)
 
 [node name="Sphere" parent="Player/AttackArea" index="0"]

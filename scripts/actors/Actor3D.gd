@@ -82,7 +82,19 @@ func _physics_process(delta: float) -> void:
 	# อัปเดตตัวจับเวลา
 	if position.y > 1000: 
 		on_died()
-	if !_alive && prev_action=="death": 
+		# ----- แรงโน้มถ่วง -----
+	if not is_on_floor():
+		velocity.y -= _gravity * delta * 5
+		if velocity.y > 200 : on_died()
+		if _time_since_left_floor >0.2:
+			action = "jump"
+			
+	if !_alive : 
+		if prev_action!="death":
+			prev_action="death"
+			model.play("death")
+		velocity.x=0
+		velocity.y=0
 		move_and_slide()
 		return
 
@@ -117,13 +129,6 @@ func _physics_process(delta: float) -> void:
 		#if self==GameManager.player:
 			#print(" prev "," speed=",vspeed," run=",run_speed*delta," ",action)
 				
-	# ----- แรงโน้มถ่วง -----
-	if not is_on_floor():
-		velocity.y -= _gravity * delta * 5
-		if velocity.y > 200 : on_died()
-		if _time_since_left_floor >0.2:
-			action = "jump"
-	
 	
 	_alive = !_data.is_dead()	
 
